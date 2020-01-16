@@ -1,0 +1,10 @@
+<div class="content" ng2FileDrop [uploader]="uploader" (dragenter)="fileOver($event)" (dragleave)="fileLeave($event)"
+  [ngClass]="{'drop-zone-file-over': hasFileOver}">
+  <div class="drop-zone-container">
+    <div class="drop-zone-content">
+      <br>
+      <mat-icon>save_alt</mat-icon>
+      Drop files here to upload.
+    </div>
+  </div>
+</div>
