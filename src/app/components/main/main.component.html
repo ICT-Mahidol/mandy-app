@@ -1,0 +1,50 @@
+<div>
+
+   <meta charset="utf-8">
+            <title>Drag & Drop Uploading</title>
+         
+                <div id="uploads"></div>
+                <div class="dropzone" id ="dropzone">Drop files here to upload</div>
+
+                <script>
+                    (function(){
+                        var dropzone = document.getElementById('dropzone');
+                      
+                        var upload = function(files){
+                            var formData = new FormData(),
+                                xhr = new XMLHttpRequest(),
+                                x;
+
+                            for(x = 0; x < files.length; x = x + 1){
+                                formData.append('file[]', files[x]);
+                            }
+
+                            xhr.onload = function() {
+                                var data = this.responseText;
+                                console.log(data);
+                            }
+
+                            xhr.open('post', 'upload.php');
+                            xhr.send(formData);
+                        }
+
+                        dropzone.ondrop = function(e) {
+                            e.preventDefault();
+                            this.className = 'dropzone';
+                            console.log(e.dataTransfer.files);
+                        };
+
+                        dropzone.ondragover = function() {
+                            this.className = 'dropzone dragover';
+                            return false;
+                        };
+
+                        dropzone.ondragleave = function() {
+                            this.className = 'dropzone';
+                            return false;
+                        };
+
+                    }());
+                </script>
+                <button type="submit" class="loginbtn">submit</button>
+</div>
