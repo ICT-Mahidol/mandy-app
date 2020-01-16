@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class AppComponent {
+export class LoginComponent {
   title = 'Mandy';
-
   private subtitle: string;
 
   // tslint:disable-next-line: use-lifecycle-interface
