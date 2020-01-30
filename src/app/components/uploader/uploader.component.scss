@@ -1,0 +1,32 @@
+body {
+    font-family: "Arial", sans-serif;
+}
+
+.dropzone {
+    widows: 300px;
+    height: 300px;
+    border: 2px dashed #ccc;
+    color: #ccc;
+    line-height: 300px;
+    text-align: center;
+}
+
+.dropzone.dragover{
+    border-color: #000;
+    color: #000;
+}
+.mat-icon {
+  
+  font-size: 300px; // Changing font-size for whole project
+  
+  
+  justify-content: center;
+  margin-left: 40%;
+  }
+
+.button{
+    margin-left: 47%;
+}
+.align{
+    text-align: center;
+}

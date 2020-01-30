@@ -1,33 +1,53 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader, FileItem } from 'ng2-file-upload';
+import { HttpClient, HttpEventType } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../authen/authentication.service';
 
 @Component({
   selector: 'app-uploader',
   templateUrl: './uploader.component.html',
   styleUrls: ['./uploader.component.scss']
 })
+
 export class UploaderComponent implements OnInit {
 
   uploader: FileUploader;
   uploading = false;
   hasBaseDropZoneOver = false;
 
-  constructor() { }
+  
+  fileData: File = null;
+  previewUrl: any = null;
+  fileUploadProgress: string = null;
+  uploadedFilePath: string = null;
+
+  constructor(private http: HttpClient,private router: Router,private auth: AuthenticationService) { }
+
+
+
+
 
   ngOnInit() {
     this.uploader = new FileUploader({
-      url: 'http://127.0.0.1:5000/upload_cases',
+      url: 'http://127.0.0.1:5000/users/upload_cases',
       autoUpload: true
     });
     this.uploader.onBeforeUploadItem = (fileItem: FileItem) => {
       this.uploading = true;
       this.hasBaseDropZoneOver = false;
+      // console.log(fileItem);
     };
-    // this.uploader.onAfterAddingFile = (fileItem: FileItem) => {
+    this.uploader.onSuccessItem = (fileItem: FileItem) => {
+      console.log(fileItem);
+    }
+        // this.uploader.onAfterAddingFile = (fileItem: FileItem) => {
     //   console.log(fileItem);
     // }
-  }
+    this.fileUploadProgress = 'File is uploading';
+}
 
+ 
   fileOver(e: any) {
     e.stopPropagation();
     e.preventDefault();
@@ -48,5 +68,20 @@ export class UploaderComponent implements OnInit {
   get hasFileOver(): boolean {
     return this.hasBaseDropZoneOver;
   }
+
+
+onSubmit() {
+    
+  alert('File is successfully uploaded');
+  alert('Please wait 20 seconds for model testing')
+  this.router.navigateByUrl('/table');
+
+  
+}  
+       
+   
+    
+
+
 
 }

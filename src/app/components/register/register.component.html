@@ -1,0 +1,30 @@
+<div>
+
+  <div class="container">
+    <form (submit)="register()">
+      <mat-card class="login-box">
+        <mat-card-header>
+          <!-- Register -->
+        </mat-card-header>
+        <mat-card-content>
+          <label for="name"><b>First name</b></label>
+          <input type="text" class="form-control" name="first_name" placeholder="Enter your first name" [(ngModel)]="credentials.first_name">
+      
+          <label for="name">Last name</label>
+          <input type="text" class="form-control" name="last_name" placeholder="Enter your last name" [(ngModel)]="credentials.last_name">
+
+         
+          <label for="email">Email</label>
+          <input type="text" class="form-control" name="email" placeholder="Email" [(ngModel)]="credentials.email">
+
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="credentials.password">
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="submit" class="loginbtn">Register</button>
+          
+        </mat-card-actions>
+      </mat-card>
+    </form>
+    </div>
+</div>

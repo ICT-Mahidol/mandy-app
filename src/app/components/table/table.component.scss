@@ -1,0 +1,44 @@
+.container {
+  padding: 16px;
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  // height: 500px;
+  // width: 900px;
+  // overflow: auto; // fit w/ box
+  // text-align: center;
+  
+}
+
+
+th.mat-header-cell, th {
+  border: 2px solid white;
+  background-color:#8DD7CF;
+  padding: 10px 20px 10px 20px !important;
+  text-align: center;
+}
+
+td.mat-cell {
+  border: 2px solid white;
+  background-color: #DFE6ED;
+  padding: 10px 20px 10px 20px !important;
+}
+
+
+.table {
+  text-align: center;
+  width: 100%;
+  height: 500px;
+}
+  // .img {
+  //   border: 1px solid #ddd;
+  //   border-radius: 4px;
+  //   padding: 5px;
+  //   width: 150px;
+  // }
+  
+  // .img:hover {
+  //   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  // }

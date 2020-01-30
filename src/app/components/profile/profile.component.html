@@ -1,0 +1,7 @@
+<h1 class="text-center">PROFILE</h1>
+<mat-divider></mat-divider>
+<mat-tab-group  mat-align-tabs="center">
+  <mat-tab label="First name"><h3 align="center"> {{ auth.getUserDetails()?.identity.first_name }}</h3></mat-tab>
+  <mat-tab label="Last name"> <h3 align="center">{{ auth.getUserDetails()?.identity.last_name }}</h3> </mat-tab>
+  <mat-tab label="Email"><h3 align="center"> {{ auth.getUserDetails()?.identity.email }} </h3> </mat-tab>
+</mat-tab-group>

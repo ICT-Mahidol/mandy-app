@@ -1,23 +1,27 @@
 <div>
 
-    <div class="container">
-        <mat-card class="login-box">
-          <mat-card-header>
-            <!-- Login -->
-          </mat-card-header>
-          <mat-card-content>
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
+  <div class="container">
+    <form (submit)="login()">
+      <mat-card class="login-box">
+        <mat-card-header>
+          <!-- Login -->
+        </mat-card-header>
+        <mat-card-content>
+          
+            <label for="email">Email address</label>
+            <input type="text" name="email" placeholder="Enter email" [(ngModel)]="credentials.email">
         
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-          </mat-card-content>
-          <mat-card-actions>
-            <button type="submit" class="loginbtn">Login</button>
-            <div class="container signin">
-              <p>Don't have an account? <br /><a href="#">Sign in</a></p>
-              </div>
-          </mat-card-actions>
-        </mat-card>
-      </div>
+            <label for="password">Password</label>
+            <input type="password"  name="password" placeholder="Enter password" [(ngModel)]="credentials.password">
+          
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="submit" class="loginbtn">Login</button>
+          <div class="container signin">
+            <p>Don't have an account? <br /><a class="nav-link" routerLink="/register">Register</a></p>
+            </div>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+    </div>
 </div>
