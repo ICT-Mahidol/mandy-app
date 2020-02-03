@@ -1,20 +1,32 @@
-<h1 align ="center" >M A N D Y</h1>
-<button mat-button  mat-raised-button [matMenuTriggerFor]="appMenu" class="menu">Menu</button>
-<mat-menu #appMenu="matMenu" yPosition="above">
-  <button mat-menu-item *ngIf="!auth.isLoggedIn()" routerLink="/login">Login</button>
-  <button mat-menu-item *ngIf="!auth.isLoggedIn()" routerLink="/register" >Register</button>
-  <button mat-menu-item  routerLink="/home" >Home</button>
-  <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/upload" >Upload</button>
-  <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/table" >Result</button>
-  <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="" (click)="auth.logout()" >Logout</button>
-</mat-menu>
+<mat-toolbar>
+  <mat-toolbar-row>
+    logo
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item *ngIf="!auth.isLoggedIn()" routerLink="/login">Login</button>
+      <button mat-menu-item *ngIf="!auth.isLoggedIn()" routerLink="/register">Register</button>
+      <button mat-menu-item routerLink="/home">Home</button>
+      <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/upload">Upload</button>
+      <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/table">Result</button>
+      <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="" (click)="auth.logout()">Logout</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="appMenu">
+      Menu
+    </button>
+    <div class="spacer"></div>
+    <h1>M A N D Y</h1>
+    <div class="spacer"></div>
+    <button mat-icon-button *ngIf="auth.isLoggedIn()" routerLink="/profile" class="person">
+      <mat-icon>person</mat-icon>
+    </button>
+    <button mat-button *ngIf="!auth.isLoggedIn()" routerLink="/login">
+      Signin
+    </button>
+  </mat-toolbar-row>
 
-<button mat-icon-button >
-  <mat-icon *ngIf="auth.isLoggedIn()" routerLink="/profile" class="person">person</mat-icon>
-</button>
-
+</mat-toolbar>
 <img src="assets/images/mandy.png" class="center">
-<h3 align="center">Predict the  location of fracture location from Mandible x-ray images</h3>
-
+<h3 align="center">Predict the location of fracture location from Mandible x-ray images</h3>
 
 <router-outlet></router-outlet>
