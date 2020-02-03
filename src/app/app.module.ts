@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FileUploadModule } from 'ng2-file-upload';
 import { MatIconModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,10 +21,10 @@ import {MatSortModule} from '@angular/material/sort';
 
 import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from './components/login/login.component';
-import { AuthenticationService } from '../app/components/authen/authentication.service'
-import { AuthGuardService } from '../app/components/authen/auth-guard.service'
+import { AuthenticationService } from '../app/components/authen/authentication.service';
+import { AuthGuardService } from '../app/components/authen/auth-guard.service';
 import { ProfileComponent} from '../app/components/profile/profile.component';
-import {RegisterComponent} from '../app/components/register/register.component'
+import {RegisterComponent} from '../app/components/register/register.component';
 import {TableComponent} from '../app/components/table/table.component';
 import {HomeComponent} from '../app/components/home/home.component';
 
@@ -38,6 +38,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 //import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatProgressSpinnerModule } from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,9 +72,7 @@ import { MatProgressSpinnerModule } from '@angular/material';
     MatDividerModule,
     MatTooltipModule,
     MatProgressSpinnerModule
- 
-    
-    
+
 
   ],
   providers: [AuthenticationService, AuthGuardService],

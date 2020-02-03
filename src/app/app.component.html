@@ -1,32 +1,35 @@
 <mat-toolbar>
+
   <mat-toolbar-row>
-    logo
-  </mat-toolbar-row>
-  <mat-toolbar-row>
-    <mat-menu #appMenu="matMenu">
-      <button mat-menu-item *ngIf="!auth.isLoggedIn()" routerLink="/login">Login</button>
-      <button mat-menu-item *ngIf="!auth.isLoggedIn()" routerLink="/register">Register</button>
-      <button mat-menu-item routerLink="/home">Home</button>
-      <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/upload">Upload</button>
-      <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/table">Result</button>
-      <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="" (click)="auth.logout()">Logout</button>
-    </mat-menu>
-    <button mat-button [matMenuTriggerFor]="appMenu">
-      Menu
-    </button>
-    <div class="spacer"></div>
-    <h1>M A N D Y</h1>
-    <div class="spacer"></div>
-    <button mat-icon-button *ngIf="auth.isLoggedIn()" routerLink="/profile" class="person">
-      <mat-icon>person</mat-icon>
-    </button>
+      <img src="assets/images/logo-header.png" class="header">
+      <div class="spacer"></div>
     <button mat-button *ngIf="!auth.isLoggedIn()" routerLink="/login">
-      Signin
+      Sign in
     </button>
+  </mat-toolbar-row>
+    <mat-toolbar-row>
+
+        <button mat-icon-button [matMenuTriggerFor]="appMenu"><mat-icon aria-label="Example menu icon">menu</mat-icon> 
+        </button>
+        <mat-menu #appMenu="matMenu">
+            <!-- <button mat-menu-item *ngIf="!auth.isLoggedIn()" routerLink="/login">Login</button> -->
+            <button mat-menu-item *ngIf="!auth.isLoggedIn()" routerLink="/register">Register</button>
+            <button mat-menu-item routerLink="/home">Home</button>
+            <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/upload">Upload</button>
+            <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/table">Result</button>
+            <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="" (click)="auth.logout()">Logout</button>
+          </mat-menu>
+          <button mat-icon-button *ngIf="auth.isLoggedIn()" routerLink="/profile" class="person">
+            <mat-icon>person</mat-icon>
+          </button>
   </mat-toolbar-row>
 
 </mat-toolbar>
-<img src="assets/images/mandy.png" class="center">
-<h3 align="center">Predict the location of fracture location from Mandible x-ray images</h3>
+  <img src="assets/images/logo-mandy.png" class="center">
+  <h3 align="center">{{subtitle}}</h3>
 
 <router-outlet></router-outlet>
+
+<footer>
+Powered by<img src="assets/images/logo-footer.png" class="footer">
+</footer>

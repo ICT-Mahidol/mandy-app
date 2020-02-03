@@ -7,20 +7,19 @@ import {TableComponent} from './components/table/table.component';
 import {HomeComponent} from './components/home/home.component';
 
 
-import { AuthGuardService } from '../app/components/authen/auth-guard.service'
+import { AuthGuardService } from '../app/components/authen/auth-guard.service';
 import { ProfileComponent} from '../app/components/profile/profile.component';
-import {RegisterComponent} from '../app/components/register/register.component'
+import {RegisterComponent} from '../app/components/register/register.component';
 
 const routes: Routes = [
-{path: 'upload', component: UploaderComponent, canActivate:[AuthGuardService]},
+{path: 'upload', component: UploaderComponent}, //, canActivate: [AuthGuardService]
   {path: 'main', component: MainComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'profile', component: ProfileComponent, canActivate:[AuthGuardService]},
+  {path: 'profile', component: ProfileComponent},//, canActivate: [AuthGuardService]
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'table', component: TableComponent,canActivate:[AuthGuardService]}
-  
- 
+  {path: 'table', component: TableComponent} //, canActivate: [AuthGuardService]
+
 ];
 
 @NgModule({

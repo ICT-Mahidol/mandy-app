@@ -16,13 +16,12 @@ export class UploaderComponent implements OnInit {
   uploading = false;
   hasBaseDropZoneOver = false;
 
-  
   fileData: File = null;
   previewUrl: any = null;
   fileUploadProgress: string = null;
   uploadedFilePath: string = null;
 
-  constructor(private http: HttpClient,private router: Router,private auth: AuthenticationService) { }
+  constructor(private http: HttpClient, private router: Router, private auth: AuthenticationService) { }
 
 
 
@@ -40,14 +39,13 @@ export class UploaderComponent implements OnInit {
     };
     this.uploader.onSuccessItem = (fileItem: FileItem) => {
       console.log(fileItem);
-    }
+    };
         // this.uploader.onAfterAddingFile = (fileItem: FileItem) => {
     //   console.log(fileItem);
     // }
     this.fileUploadProgress = 'File is uploading';
 }
 
- 
   fileOver(e: any) {
     e.stopPropagation();
     e.preventDefault();
@@ -71,17 +69,10 @@ export class UploaderComponent implements OnInit {
 
 
 onSubmit() {
-    
   alert('File is successfully uploaded');
-  alert('Please wait 20 seconds for model testing')
+  alert('Please wait 20 seconds for model testing');
   this.router.navigateByUrl('/table');
 
-  
-}  
-       
-   
-    
 
-
-
+}
 }
