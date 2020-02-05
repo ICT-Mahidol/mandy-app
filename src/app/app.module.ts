@@ -36,8 +36,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
-//import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { MatProgressSpinnerModule } from '@angular/material';
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SpinnerComponent } from '../app/components/spinner/spinner.component';
+import { AnnotateComponent } from './components/annotate/annotate.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { MatProgressSpinnerModule } from '@angular/material';
     RegisterComponent,
     ProfileComponent,
     TableComponent,
-    HomeComponent
+    HomeComponent,
+    SpinnerComponent,
+    AnnotateComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,8 @@ import { Case } from '../models/models';
 
 import { HttpClient } from '@angular/common/http';
  
-
+import { Router } from '@angular/router';
+ 
 
 
 /**
@@ -24,7 +25,7 @@ export class TableComponent  implements OnInit{
   
 
   
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
   ngOnInit() {
     
     this.http.get("http://localhost:5000/users/get_cases").subscribe((success) => {
@@ -34,7 +35,9 @@ export class TableComponent  implements OnInit{
     });
   }
 
-  
+  onSubmit(){
+    this.router.navigateByUrl('/annotate')
+  }
 
 
 }

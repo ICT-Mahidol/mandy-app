@@ -3,6 +3,7 @@ import { FileUploader, FileItem } from 'ng2-file-upload';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authen/authentication.service';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-uploader',
@@ -69,10 +70,7 @@ export class UploaderComponent implements OnInit {
 
 
 onSubmit() {
-  alert('File is successfully uploaded');
-  alert('Please wait 20 seconds for model testing');
-  this.router.navigateByUrl('/table');
-
-
+  alert('sucessfully upload file');
+  this.router.navigateByUrl('/spinner');
 }
 }

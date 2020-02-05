@@ -3,13 +3,17 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <h1 align ="center">CHOOSE FILE</h1>     
-              <mat-divider></mat-divider>       
+              <mat-divider></mat-divider>  
+              
 <div class="content" ng2FileDrop [uploader]="uploader" (dragenter)="fileOver($event)" (dragleave)="fileLeave($event)"
   [ngClass]="{'drop-zone-file-over': hasFileOver}">
   <div class="drop-zone-container">
     <div class="drop-zone-content">
       <br>
-      <mat-icon class="mat-icon">save_alt</mat-icon>
+      
+}
+      <mat-icon class="mat-icon" >save_alt</mat-icon>
+     
        <p  class="align">Drop files here to upload.</p>
      
     </div>
@@ -18,7 +22,7 @@
 
 <div class="form-group">
     
-    <button mat-raised-button class="button"  (click)="onSubmit()">Submit</button>
+   <button mat-raised-button class="button"  (click)="onSubmit()">Submit</button>
 </div>
 
 

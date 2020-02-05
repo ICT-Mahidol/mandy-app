@@ -20,18 +20,18 @@
     <!-- Diagnosis Column -->
     <ng-container matColumnDef="diagnose">
       <th mat-header-cell *matHeaderCellDef> Diagnosis </th>
-      <td mat-cell *matCellDef="let case"> {{case.predDiags}} </td>
+      <td mat-cell *matCellDef="let case"> <ul><li>{{case.predDiags}} </li></ul></td>
     </ng-container>
 
     <!-- Additional Column -->
     <ng-container matColumnDef="predDiags">
       <th mat-header-cell *matHeaderCellDef> View detail </th>
-      <td mat-cell *matCellDef="let case"> <button>View Detail</button><!--{{Case.predDiags}}--> </td>
+      <td mat-cell *matCellDef="let case"> <button  mat-raised-button class="button"(click)="onSubmit()">View Detail</button><!--{{Case.predDiags}}--> </td>
     </ng-container>
 
     <ng-container matColumnDef="annoDiags">
       <th mat-header-cell *matHeaderCellDef> Annotate </th>
-      <td mat-cell *matCellDef="let case"> <button>Annotate</button> </td>
+      <td mat-cell *matCellDef="let case"> <button  mat-raised-button class="button" (click)="onSubmit()">Annotate</button> </td>
     </ng-container>
 
     <!-- Status Column -->
