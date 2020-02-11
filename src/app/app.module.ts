@@ -40,6 +40,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SpinnerComponent } from '../app/components/spinner/spinner.component';
 import { AnnotateComponent } from './components/annotate/annotate.component';
+import { AnnotatorComponent } from './components/annotator/annotator.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AnnotateComponent } from './components/annotate/annotate.component';
     TableComponent,
     HomeComponent,
     SpinnerComponent,
-    AnnotateComponent
+    AnnotateComponent,
+    AnnotatorComponent
   ],
   imports: [
     BrowserModule,

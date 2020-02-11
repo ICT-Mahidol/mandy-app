@@ -14,7 +14,7 @@ export class AppComponent {
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
     this.subtitle = 'Predict the location of fracture location from Mandible x-ray images';
-    this.router.navigateByUrl('/home');
+    // this.router.navigateByUrl('/home');
   }
 
   constructor(public auth: AuthenticationService, private router: Router) {}

@@ -26,6 +26,7 @@
     "hammerjs": "^2.0.8",
     "index.js": "0.0.3",
     "ng2-file-upload": "^1.4.0",
+    "paper": "^0.12.4",
     "remove-and-do": "^1.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
