@@ -22,10 +22,6 @@ import { MessageComponent } from './components/message/message.component';
 const routes: Routes = [
 
 
-
-
-
-
   { path: 'upload', component: UploaderComponent, canActivate: [AuthGuardService] },
   { path: 'main', component: MainComponent },
   { path: 'login', component: LoginComponent },
