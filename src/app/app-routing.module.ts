@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { TableComponent } from './components/table/table.component';
 import { HomeComponent } from './components/home/home.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+
 import { TrainingComponent } from './components/training/training.component';
 import { TestingComponent } from './components/testing/testing.component';
 
@@ -19,11 +20,18 @@ import { MessageComponent } from './components/message/message.component';
 
 
 const routes: Routes = [
+
+
+
+
+
+
   { path: 'upload', component: UploaderComponent, canActivate: [AuthGuardService] },
   { path: 'main', component: MainComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: 'register', component: RegisterComponent },
+
   { path: '', component: HomeComponent },
   { path: 'table', component: TableComponent, canActivate: [AuthGuardService] },
   { path: 'annotate/:caseId', component: AnnotateComponent },
@@ -32,6 +40,8 @@ const routes: Routes = [
   { path: 'spinner', component: SpinnerComponent },
   { path: 'viewdetail/:caseId', component: ViewdetailComponent },
   { path: 'message', component: MessageComponent }
+
+
 ];
 
 @NgModule({

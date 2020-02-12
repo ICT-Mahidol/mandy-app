@@ -40,6 +40,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SpinnerComponent } from '../app/components/spinner/spinner.component';
 import { AnnotateComponent } from './components/annotate/annotate.component';
+
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TrainingComponent } from './components/training/training.component';
 import { TestingComponent } from './components/testing/testing.component';
@@ -52,6 +53,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MessageComponent } from './components/message/message.component';
+
+
 
 
 
@@ -71,6 +74,7 @@ import { MessageComponent } from './components/message/message.component';
     TestingComponent,
     ViewdetailComponent,
     MessageComponent
+
   ],
   imports: [
     BrowserModule,
