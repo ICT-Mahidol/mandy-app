@@ -1,0 +1,62 @@
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 44%;
+}
+.canvas-container{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    cursor: pointer;
+  }
+
+canvas {
+      margin: auto;
+      background-color: #555;
+      width: 600px;
+      height: 400px;
+    }
+  
+.img:hover {
+      box-shadow: 0 0 2px 5px rgba(0, 140, 186, 0.5);
+     }
+
+.button-back:hover{ 
+  
+      background-color:#EAEAE7;
+  
+    }
+
+.panel.mat-select-panel {
+      background: #EAEAE7;
+    }
+
+.margin{
+      margin: 50px;
+    }
+
+.confirm{
+      margin:auto;
+      display:block;
+      background-color: #6CBBB3;
+      margin-top:2%
+    }
+
+.confirm:hover{
+      margin:auto;
+      display:block;
+      background-color:#F5C225;
+    }
+
+    .undo {
+  
+      display: flex;
+      justify-content: center;
+      background-color: #EAEAE7;
+      margin-left: 70%;
+      margin-bottom: 1%;
+      }
+
+  

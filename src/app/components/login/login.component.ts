@@ -1,20 +1,3 @@
-/*import { Component} from '@angular/core';
-
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
-})
-export class LoginComponent {
-  title = 'Mandy';
-  private subtitle: string;
-
-  // tslint:disable-next-line: use-lifecycle-interface
-  ngOnInit() {
-    this.subtitle = 'Predict the location of fracture location from Mandible x-ray images'
-  }
-
-}*/
 import { Component } from '@angular/core'
 import { AuthenticationService, TokenPayload } from '../authen/authentication.service'
 import { Router } from '@angular/router'
@@ -32,8 +15,11 @@ export class LoginComponent {
     email: '',
     password: ''
   }
-
-  constructor(private auth: AuthenticationService, private router: Router) {}
+  private subtitle: string;
+  ngOnInit() {
+    this.subtitle = 'Predict the fracture name and location from Mandible x-ray images';
+  }
+  constructor(private auth: AuthenticationService, private router: Router) { }
 
   login() {
     this.auth.login(this.credentials).subscribe(

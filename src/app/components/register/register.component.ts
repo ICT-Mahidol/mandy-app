@@ -18,7 +18,10 @@ export class RegisterComponent {
 
 
   constructor(private auth: AuthenticationService, private router: Router) {}
-  
+  private subtitle: string;
+  ngOnInit() {
+    this.subtitle = 'Predict the location of fracture location from Mandible x-ray images'
+  }
   register() {
     
     this.auth.register(this.credentials).subscribe(

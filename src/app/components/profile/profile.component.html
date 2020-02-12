@@ -1,7 +1,22 @@
 <h1 class="text-center">PROFILE</h1>
-<mat-divider></mat-divider>
-<mat-tab-group  mat-align-tabs="center">
-  <mat-tab label="First name"><h3 align="center"> {{ auth.getUserDetails()?.identity.first_name }}</h3></mat-tab>
-  <mat-tab label="Last name"> <h3 align="center">{{ auth.getUserDetails()?.identity.last_name }}</h3> </mat-tab>
-  <mat-tab label="Email"><h3 align="center"> {{ auth.getUserDetails()?.identity.email }} </h3> </mat-tab>
-</mat-tab-group>
+<div class="align">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{ auth.getUserDetails()?.identity.first_name }}</mat-card-title>
+      <mat-card-subtitle>{{ auth.getUserDetails()?.identity.last_name }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image
+      src="https://scontent.fbkk22-1.fna.fbcdn.net/v/t1.0-9/67030142_2537981712959412_5312666303662653440_n.jpg?_nc_cat=108&_nc_ohc=eLgQfY0wNb4AX_HQf69&_nc_ht=scontent.fbkk22-1.fna&oh=3cfa46a70dfe73daa4c7d1d9ddc35c4a&oe=5ECE2829"
+      alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <button mat-button style=" background-color: #6CBBB3;">Active</button>
+      <div class="float">
+        <mat-icon>email</mat-icon>
+        <mat-icon>calls</mat-icon>
+        <mat-icon>forum</mat-icon>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

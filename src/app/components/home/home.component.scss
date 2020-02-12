@@ -1,17 +1,33 @@
-// .margin{
-//     margin-left: 20%;
-//     margin-top: 2%;
-// }
- .item{
-     margin-left: 5%;
-     
-    
+
+ .item {
+     float: left;
  }
 
-.container {
+ .item2 :hover{
+    margin-left: 5%;
+    background-color:white;
+  }
+.block{
+    margin :5%
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 12%;
+  }
+
+  .container {
     width: 100%;
     display: flex;
     flex-direction: row;
     align-content: center;
     align-items: center;
 }
+body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", sans-serif; }
+
+::ng-deep.mat-expansion-panel{
+  background-color: #EAEAE7;
+}
+

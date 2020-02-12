@@ -17,16 +17,21 @@ body {
 }
 .mat-icon {
   
-  font-size: 300px; // Changing font-size for whole project
+  font-size: 100px; // Changing font-size for whole project
   
-  
+  display: flex; 
+  width: 100px;
+  height: 120px; 
+  align-items:center; 
   justify-content: center;
-  margin-left: 40%;
+  margin-left: 41%;
+   
   }
 
 .button{
-    margin-left: 47%;
-    background-color: #6CBBB3;
+  margin:auto;
+  display:block;
+  background-color: #6CBBB3;
 }
 .align{
     text-align: center;
@@ -35,3 +40,65 @@ body {
     
     margin:0 auto;
 }
+body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", sans-serif; }
+.box{
+    width:40%;
+    height:100%;
+    border:1px  dotted #000;
+    margin-bottom:4%;
+    margin-left: 30%;
+    
+    
+}
+
+.button:hover{
+  margin:auto;
+  display:block;
+  background-color:#F5C225;
+}
+.item {
+    margin-left: 5%;
+   
+   
+  }
+.item2 :hover{
+   margin-left: 5%;
+   background-color: #6CBBB3;
+
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}
+.img{
+    width: 50%;;
+    height: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.block{
+    margin-bottom :15px;
+  }
+
+  
+ .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:20px;
+        width: 50%;
+ }
+
+ .result{
+    
+    text-align: center;
+    
+ }
+
+ 

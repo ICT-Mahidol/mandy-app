@@ -1,34 +1,50 @@
-<div class="container">
-   
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h1 align ="center">CHOOSE FILE</h1>     
-              <mat-divider></mat-divider>  
-              
-<div class="content" ng2FileDrop [uploader]="uploader" (dragenter)="fileOver($event)" (dragleave)="fileLeave($event)"
-  [ngClass]="{'drop-zone-file-over': hasFileOver}">
-  <div class="drop-zone-container">
-    <div class="drop-zone-content">
-      <br>
-      
-}
-      <mat-icon class="mat-icon" >save_alt</mat-icon>
-     
-       <p  class="align">Drop files here to upload.</p>
-     
+<h1 align="center">W E L C O M E &nbsp; &nbsp;T O&nbsp;&nbsp; M A N D Y</h1>
+
+<div>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+
+      <div class="content" ng2FileDrop [uploader]="uploader" (dragenter)="fileOver($event)"
+        (dragleave)="fileLeave($event)" [ngClass]="{'drop-zone-file-over': hasFileOver}">
+        <div class="drop-zone-container">
+          <div class="drop-zone-content">
+            <br>
+
+            <!--- <div class=box *ngIf="!navigate()">-->
+
+            <div class=box>
+              <mat-icon class="mat-icon" *ngIf="!imageURL">save_alt</mat-icon>
+              <p class="align" *ngIf="!imageURL">Drop files here to upload.</p>
+              <img *ngIf="imageURL" class="img" [src]="imageURL" alt="images">
+            </div>
+            <mat-spinner color="warn" class="mat-spinner" *ngIf="navigate()"></mat-spinner>
+
+            <p class="align" *ngIf="navigate()">{{message}}</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="block">
+
+        <button mat-raised-button class="button" *ngIf="!navigate()" (click)="onSubmit()">Submit</button>
+        <div class="result" *ngIf="!navigate()">
+          <p>Would you like to see existing result? <br /><a class="nav-link" routerLink="/table">Result</a></p>
+        </div>
+        <button mat-raised-button class="button" *ngIf="navigate()" (click)="onResult()">Result</button>
+      </div>
+
+      <mat-divider></mat-divider>
+
+
     </div>
   </div>
-</div>
-
-<div class="form-group">
-    
-   <button mat-raised-button class="button"  (click)="onSubmit()">Submit</button>
-</div>
-
-
-
 
 </div>
-</div>
+<div class="container">
+
+  <mat-divider></mat-divider>
+  <img src="assets/images/bony.png" class="center">
 
 </div>

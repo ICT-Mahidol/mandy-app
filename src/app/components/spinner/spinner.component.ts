@@ -10,13 +10,8 @@ export class SpinnerComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    
-  }
-  onSubmit() {
-    
-    alert("Result is ready!!")
     this.router.navigateByUrl('/table');
   }
-  
 
+ 
 }

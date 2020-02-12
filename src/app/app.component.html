@@ -1,36 +1,42 @@
 <mat-toolbar >
 
   <mat-toolbar-row>
-      <img src="assets/images/logo-header.png" class="header">
-      <div class="spacer"></div>
-    <button mat-button *ngIf="!auth.isLoggedIn()" routerLink="/login">
+    <img src="assets/images/logo-header.png" class="header">
+
+    <button class="button" mat-button [matMenuTriggerFor]="appMenu">
+      <mat-icon aria-label="Example menu icon">menu</mat-icon>
+      <mat-menu #appMenu="matMenu">
+
+        <button mat-menu-item *ngIf="!auth.isLoggedIn()" routerLink="/register">Register</button>
+        <button mat-menu-item routerLink="/">Home</button>
+        <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/upload">Upload</button>
+        <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/table">Result</button>
+
+      </mat-menu>
+
+    </button>
+    <button class="sign-in" mat-button *ngIf="!auth.isLoggedIn()" routerLink="/login">
       Sign in
     </button>
-  </mat-toolbar-row>
-    <mat-toolbar-row>
+    <button  *ngIf="auth.isLoggedIn()" [matMenuTriggerFor]="profile" mat-mini-fab class="person">
+      <mat-icon>person</mat-icon>
+      <mat-menu #profile="matMenu">
+        <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/profile">Profile</button>
+        <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="" (click)="auth.logout()" >Logout</button>
+      </mat-menu>
+    </button>
 
-        <button mat-icon-button [matMenuTriggerFor]="appMenu"><mat-icon aria-label="Example menu icon">menu</mat-icon> 
-        </button>
-        <mat-menu #appMenu="matMenu">
-            <!-- <button mat-menu-item *ngIf="!auth.isLoggedIn()" routerLink="/login">Login</button> -->
-            <button mat-menu-item *ngIf="!auth.isLoggedIn()" routerLink="/register">Register</button>
-            <button mat-menu-item routerLink="/home">Home</button>
-            <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/upload">Upload</button>
-            <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/table">Result</button>
-            <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="" (click)="auth.logout()">Logout</button>
-          </mat-menu>
-          <button mat-icon-button *ngIf="auth.isLoggedIn()" routerLink="/profile" class="person">
-            <mat-icon>person</mat-icon>
-          </button>
+   
   </mat-toolbar-row>
 
 </mat-toolbar>
-  <img src="assets/images/logo-mandy.png" class="center">
-  <h3 align="center">{{subtitle}}</h3>
+
+<img src="assets/images/logo-mandy.png" class="center">
+
 
 <router-outlet></router-outlet>
 
-<footer>
-<p class="power">Powered by</p>
-<img src="assets/images/logo-footer.png" class="footer">
+<footer class="block">
+  <p class="power"><b>Powered by</b></p>
+  <img src="assets/images/logo-footer.png" class="footer">
 </footer>

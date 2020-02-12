@@ -40,6 +40,20 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SpinnerComponent } from '../app/components/spinner/spinner.component';
 import { AnnotateComponent } from './components/annotate/annotate.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { TrainingComponent } from './components/training/training.component';
+import { TestingComponent } from './components/testing/testing.component';
+import { ViewdetailComponent } from './components/viewdetail/viewdetail.component';
+
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MessageComponent } from './components/message/message.component';
+
+
 
 @NgModule({
   declarations: [
@@ -52,7 +66,11 @@ import { AnnotateComponent } from './components/annotate/annotate.component';
     TableComponent,
     HomeComponent,
     SpinnerComponent,
-    AnnotateComponent
+    AnnotateComponent,
+    TrainingComponent,
+    TestingComponent,
+    ViewdetailComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -75,11 +93,18 @@ import { AnnotateComponent } from './components/annotate/annotate.component';
     MatProgressBarModule,
     MatDividerModule,
     MatTooltipModule,
-    MatProgressSpinnerModule
-
-
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    NgxChartsModule
   ],
   providers: [AuthenticationService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
