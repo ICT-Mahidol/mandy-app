@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessageComponent } from '../message/message.component';
 import { ParsedProperty } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
+//import * as html2canvas from 'html2canvas';
 
 
 interface Fracture {
@@ -93,7 +94,7 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
     this.aRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.http.get('http://localhost:5000/users/get_annotate/' + paramMap.get('caseId')).subscribe((success) => {
         this.annotate = success;
-        console.log(success)
+        //console.log(success)
       })
     });
 
@@ -177,13 +178,36 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
     this.router.navigateByUrl('/table');
   }
 
+  
+//first function for line 2
+
+dataURLtoBlob(dataurl) {
+  var byteString = atob(dataurl.split(',')[1]);
+  var mimeString = dataurl.split(',')[0].split(':')[1].split(';')[0];
+  var ab = new ArrayBuffer(byteString.length);
+  var ia = new Uint8Array(ab);
+  for (var i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  return new Blob([ab], { type: mimeString });
+}
+
+// second function for line 4
+
+blobToFile(theBlob, fileName) {
+  theBlob.lastModifiedDate = new Date();
+  theBlob.name = fileName;
+  return theBlob;
+}
+
   onSubmit() {
     this.message.openFromComponent(MessageComponent, {
       duration: this.durationInSeconds * 1000,
     });
     const raster = this.drawLayer.rasterize(150);
-      
-    console.log(raster);
+   
+    //console.log(raster);
+ 
   }
 
   onNameSelection() {

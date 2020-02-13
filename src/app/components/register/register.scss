@@ -63,3 +63,10 @@ a {
   text-align: center;
 }
 body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", sans-serif; }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 12%;
+}

@@ -85,7 +85,7 @@ export class UploaderComponent implements OnInit {
       this._testing.openFromComponent(TestingComponent, {
         duration: this.durationInSeconds * 1000,
       });
-    }, 10000);
+    }, 15000);
 
     this._training.openFromComponent(TrainingComponent, {
       duration: this.durationInSeconds * 5000,
@@ -98,7 +98,7 @@ export class UploaderComponent implements OnInit {
     if (this.condition == true) {
       setTimeout(() => {
         this.message = "View result";
-      }, 15000);
+      }, 20000);
 
       return true;
     }
