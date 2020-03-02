@@ -26,9 +26,7 @@
     <ng-container matColumnDef="diagnose">
       <th mat-header-cell *matHeaderCellDef> Diagnosis </th>
       <td mat-cell *matCellDef="let case">
-        <ul>
-          <li>{{case.predDiags}} </li>
-        </ul>
+        {{case.predDiags}} 
       </td>
     </ng-container>
 

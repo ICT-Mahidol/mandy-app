@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -17,12 +17,13 @@ interface Label {
 export class ViewdetailComponent implements OnInit {
 
   res_label: any
-  
+  selectedName: string;
 
   displayedColumns = ['caseName', 'imageSrc'];
   dataSource: any;
   caseId: string;
   grad: any;
+  condition:boolean;
 
   labels: Label[] = [
     { value: 'Symphysis-Parasymphysis-0', viewValue: 'Symphysis-Parasymphysis' },
@@ -53,10 +54,10 @@ export class ViewdetailComponent implements OnInit {
         console.log(success)
       });
 
-      this.http.get('http://localhost:5000/users/get_gradcam/' + paramMap.get('caseId')).subscribe((success) => {
+      /*this.http.get('http://localhost:5000/users/get_gradcam/' + paramMap.get('caseId')).subscribe((success) => {
         this.grad = success;
-        //console.log(success)
-        });
+        console.log(success)
+        });*/
 
     });
 
@@ -132,7 +133,24 @@ export class ViewdetailComponent implements OnInit {
   onDeactivate(data): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
+  
+  onNameSelection():boolean{
+    //console.log(this.selectedName);
+    this.condition = true;
+    if (this.condition) {
+    const params = new HttpParams().set('name', this.selectedName)
+    this.aRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.http.get('http://localhost:5000/users/get_gradcam/' + paramMap.get('caseId'),{params}).subscribe((success) => {
+        this.grad = success;
+        console.log(success);
+        });
 
+    });
+    return true;
+  } else {
+    return false;
+   }
+  }
   onBack() {
     this.router.navigateByUrl('/table');
   }

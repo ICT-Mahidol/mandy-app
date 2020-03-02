@@ -1,3 +1,37 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <img src="assets/images/logo-header.png" class="header">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="/upload">Upload</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/table">Result</a>
+      </li>
+    </ul>  
+    
+  </div>
+
+ 
+  <button   *ngIf="!auth.isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" type="submit" routerLink="/login">Sign in</button>
+      <button  *ngIf="auth.isLoggedIn()" [matMenuTriggerFor]="profile" mat-mini-fab class="person">
+        <mat-icon>person</mat-icon>
+        <mat-menu #profile="matMenu">
+          <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/profile">Profile</button>
+          <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="" (click)="auth.logout()" >Logout</button>
+        </mat-menu>
+      </button>
+   
+  
+</nav>
+<!---
 <mat-toolbar >
 
   <mat-toolbar-row>
@@ -31,7 +65,7 @@
 
 </mat-toolbar>
 
-
+-->
 
 
 <router-outlet></router-outlet>
@@ -40,3 +74,6 @@
   <p class="power"><b>Powered by</b></p>
   <img src="assets/images/logo-footer.png" class="footer">
 </footer>
+
+
+

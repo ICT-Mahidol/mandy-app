@@ -87,6 +87,6 @@ export class AuthenticationService {
   public logout(): void {
     this.token = '';
     window.localStorage.removeItem('usertoken');
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/');
   }
 }

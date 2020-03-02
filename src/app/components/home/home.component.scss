@@ -1,11 +1,4 @@
- .item {
-     float: left;
- }
 
- .item2 :hover{
-    margin-left: 5%;
-    background-color:white;
-  }
 .block{
     margin :5%
   }
@@ -26,9 +19,27 @@
 }
 body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", sans-serif; }
 
-::ng-deep.mat-expansion-panel{
-  background-color: #EAEAE7;
+.img{
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.example-card{
+  max-width: 100%;
+  align-content: center;
+}
+
+.container {
+  padding: 16px;
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
 
 
 

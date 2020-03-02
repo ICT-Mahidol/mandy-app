@@ -4,7 +4,7 @@
 <h1 align="center">Annotate</h1>
 
 <div class="margin">
-<p align="center">Annotate Fracture Location</p>
+<h4 align="center">Annotate Fracture Location</h4>
 <button mat-mini-fab class="undo"(click)="onDelete()"><mat-icon>delete</mat-icon></button>
 
 <div class="canvas-container">
@@ -12,9 +12,11 @@
 </div>
 </div>
 
-<p align="center">Annotate Fracture Name</p>
+<h4 align="center">Annotate Fracture Name</h4>
 
-<mat-form-field class="form">
+<div class="align">
+  <mat-card class="example-card">
+<mat-form-field >
   <mat-label>Select your fracture name</mat-label>
   <mat-select [formControl]="fractureControl" panelClass="panel" [(ngModel)]="selectedName" (ngModelChange)="onNameSelection()">
     <mat-optgroup *ngFor="let group of fractureGroups" [label]="group.name" [disabled]="group.disabled">
@@ -24,5 +26,6 @@
     </mat-optgroup>
   </mat-select>
 </mat-form-field>
-
-<button mat-raised-button class="confirm" (click)="onSubmit()">Confirm</button>
+</mat-card>
+</div>
+<button class="btn btn-success button" (click)="onSubmit()">Confirm</button>

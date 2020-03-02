@@ -30,24 +30,17 @@ canvas {
     }
 
 .panel.mat-select-panel {
-      background: #EAEAE7;
+      background: white;
     }
 
 .margin{
       margin: 50px;
     }
 
-.confirm{
+.button{
       margin:auto;
       display:block;
-      background-color: #6CBBB3;
       margin-top:2%
-    }
-
-.confirm:hover{
-      margin:auto;
-      display:block;
-      background-color:#DFE6ED;
     }
 
     .undo {
@@ -59,4 +52,14 @@ canvas {
       margin-bottom: 1%;
       }
 
-  
+      .example-card {
+        max-width: 60%;
+        align-items: center;
+      }
+
+      .align{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    

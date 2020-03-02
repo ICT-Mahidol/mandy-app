@@ -28,11 +28,7 @@ body {
    
   }
 
-.button{
-  margin:auto;
-  display:block;
-  background-color: #6CBBB3;
-}
+
 .align{
     text-align: center;
 }
@@ -41,20 +37,22 @@ body {
     margin:0 auto;
 }
 body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", sans-serif; }
+
 .box{
-    width:40%;
+    width:80%;
     height:100%;
     border:1px  dotted #000;
     margin-bottom:4%;
-    margin-left: 30%;
+    margin-left: 10%;
     
     
 }
 
-.button:hover{
+
+.button{
   margin:auto;
   display:block;
-  background-color:#DFE6ED;
+  margin-top:2%
 }
 
 
@@ -64,6 +62,7 @@ body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 
     flex-direction: row;
     align-content: center;
     align-items: center;
+    
 }
 .img{
     width: 50%;;
@@ -92,4 +91,31 @@ body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 
     
  }
 
+
+::ng-deep.mat-expansion-panel{
+  background-color: #EAEAE7;
+}
+
+::ng-deep.mat-expansion-panel:hover{
+  background-color: white;
+}
+ 
+.spacer{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.item{
+  margin-left: 2%;
+}
+
+.example-card{
+  max-width: 100%;
+  margin-top: 4%;
+}
+
+.text{
+  margin-top: 4%;
+  text-align: center;
+}
  

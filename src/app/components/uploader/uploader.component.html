@@ -18,6 +18,8 @@
               <p class="align" *ngIf="!imageURL">Drop files here to upload.</p>
               <img *ngIf="imageURL" class="img" [src]="imageURL" alt="images">
             </div>
+           
+
             <mat-spinner color="warn" class="mat-spinner" *ngIf="navigate()"></mat-spinner>
 
             <p class="align" *ngIf="navigate()">{{message}}</p>
@@ -28,23 +30,81 @@
 
       <div class="block">
 
-        <button mat-raised-button class="button" *ngIf="!navigate()" (click)="onSubmit()">Submit</button>
+        <button class="btn btn-success button" *ngIf="!navigate()" (click)="onSubmit()">Submit</button>
+        <div class ="spacer"></div>
         <div class="result" *ngIf="!navigate()">
-          <p>Would you like to see existing result? <br /><a class="nav-link" routerLink="/table">Result</a></p>
+          <p >Would you like to see existing result? <br /><a class="nav-link" routerLink="/table">Result</a></p>
         </div>
-        <button mat-raised-button class="button" *ngIf="navigate()" (click)="onResult()">Result</button>
+        <button class="btn btn-success button" *ngIf="navigate()" (click)="onResult()">Result</button>
       </div>
 
       <mat-divider></mat-divider>
-
-
     </div>
   </div>
-
-</div>
+<h6 class="text"><b>Locations of Mandibular Fracture</b></h6>
 <div class="container">
 
-  <mat-divider></mat-divider>
-  <img src="assets/images/bony.png" class="center">
+  <div class="spacer"></div>
+  <div>
+    <mat-card class="example-card">
+      <img mat-card-image src="assets/images/fracture.PNG">
+    </mat-card>
+    </div>
 
+  <div class ="item">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Left (Lt.)
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        Lt. Condylar fx
+        <mat-divider></mat-divider>
+        Lt. Coronoid fx
+        <mat-divider></mat-divider>
+        Lt. Ramus-Angle fx
+        <mat-divider></mat-divider>
+        Lt. Body fx
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Right (Rt.)
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+
+        Rt. Condylar fx
+        <mat-divider></mat-divider>
+        Rt. Coronoid fx
+        <mat-divider></mat-divider>
+        Rt. Ramus-Angle fx
+        <mat-divider></mat-divider>
+        Rt. Body fx
+
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Middle
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        Symphaseal
+        <mat-divider></mat-divider>
+        Paraymphaseal
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="spacer"></div>
+
+  
 </div>

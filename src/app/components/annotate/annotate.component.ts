@@ -94,7 +94,6 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
     this.aRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.http.get('http://localhost:5000/users/get_annotate/' + paramMap.get('caseId')).subscribe((success) => {
         this.annotate = success;
-        //console.log(success)
       })
     });
 
@@ -104,8 +103,8 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.scope = new paper.PaperScope();
       this.scope.setup(this.canvasElement.nativeElement);
-      this.scope.view.element.setAttribute('width', '600')
-      this.scope.view.element.setAttribute('height', '400')
+      this.scope.view.element.setAttribute('width', '600');
+      this.scope.view.element.setAttribute('height', '400');
       this.userProject = this.scope.project;
       this.backgroudLayer = new paper.Layer();
       this.drawLayer = new paper.Layer();
@@ -121,7 +120,11 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
     const canvasEl = this.canvasElement.nativeElement;
     console.log(canvasEl);
     const imageEl = new Image();
-    imageEl.src = 'http://localhost:5000/'+this.annotate;
+    //imageEl.crossOrigin = '*';  //<-- set here
+    imageEl.src = 'http://localhost:5000/' + this.annotate;
+    //imageEl.crossOrigin = 'Anonymous';
+
+   
 
     imageEl.onload = (ev: Event) => {
       const scale = Math.min(
@@ -132,7 +135,6 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
       image.position = new paper.Point(canvasEl.width / 2, canvasEl.height / 2);
       this.backgroudLayer.addChild(image);
     };
-
   }
 
   onDelete() {
@@ -179,36 +181,17 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
   }
 
   
-//first function for line 2
-
-dataURLtoBlob(dataurl) {
-  var byteString = atob(dataurl.split(',')[1]);
-  var mimeString = dataurl.split(',')[0].split(':')[1].split(';')[0];
-  var ab = new ArrayBuffer(byteString.length);
-  var ia = new Uint8Array(ab);
-  for (var i = 0; i < byteString.length; i++) {
-    ia[i] = byteString.charCodeAt(i);
-  }
-  return new Blob([ab], { type: mimeString });
-}
-
-// second function for line 4
-
-blobToFile(theBlob, fileName) {
-  theBlob.lastModifiedDate = new Date();
-  theBlob.name = fileName;
-  return theBlob;
-}
-
   onSubmit() {
     this.message.openFromComponent(MessageComponent, {
       duration: this.durationInSeconds * 1000,
     });
     const raster = this.drawLayer.rasterize(150);
-   
-    //console.log(raster);
- 
-  }
+
+    const output = raster.toDataURL();
+    // send to server
+    console.log(output)
+    
+}
 
   onNameSelection() {
     console.log(this.selectedName);
