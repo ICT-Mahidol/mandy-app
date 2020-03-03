@@ -68,6 +68,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "mandy-app:build"
+            
           },
           "configurations": {
             "production": {

@@ -33,13 +33,10 @@ export class ViewdetailComponent implements OnInit {
 
  // labels: Label[] = this.res_label;
 
- 
-
   constructor(
     private router: Router,
     private aRoute: ActivatedRoute,
     private http: HttpClient) {
-
     //Object.assign(this, { single });
     // console.log(this)
   }
@@ -51,7 +48,7 @@ export class ViewdetailComponent implements OnInit {
       });
       this.http.get('http://localhost:5000/users/get_prediction/' + paramMap.get('caseId')).subscribe((success) => {
         this.res_label = success;
-        console.log(success)
+        //console.log(success)
       });
 
       /*this.http.get('http://localhost:5000/users/get_gradcam/' + paramMap.get('caseId')).subscribe((success) => {
@@ -63,17 +60,13 @@ export class ViewdetailComponent implements OnInit {
 
   }
 
-
-
-
-
   public chartType: string = 'horizontalBar';
 
-  public chartDatasets: Array<any> = [
+ /* public chartDatasets: Array<any> = [
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'My First dataset' }
-  ];
+  ];*/
 
-  public chartLabels: Array<any> = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+  public chartLabels: Array<any> = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange',];
 
   public chartColors: Array<any> = [
     {
@@ -117,21 +110,21 @@ export class ViewdetailComponent implements OnInit {
   xAxisLabel: string = 'Percentage';
 
   colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA','Black','Blue','Pink','Orange']
   };
 
 
 
   onSelect(data): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+    //console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
 
   onActivate(data): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
+    //console.log('Activate', JSON.parse(JSON.stringify(data)));
   }
 
   onDeactivate(data): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+    //console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
   
   onNameSelection():boolean{

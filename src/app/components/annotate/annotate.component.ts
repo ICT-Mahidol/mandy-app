@@ -29,6 +29,7 @@ interface FractureGroup {
 })
 export class AnnotateComponent implements OnInit, AfterViewInit {
 
+  
 
   @ViewChild('canvas', { static: true }) canvasElement: ElementRef;
 
@@ -122,7 +123,7 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
     const imageEl = new Image();
     //imageEl.crossOrigin = '*';  //<-- set here
     imageEl.src = 'http://localhost:5000/' + this.annotate;
-    //imageEl.crossOrigin = 'Anonymous';
+   // imageEl.setAttribute('crossorigin', 'anonymous');
 
    
 
@@ -186,10 +187,22 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
       duration: this.durationInSeconds * 1000,
     });
     const raster = this.drawLayer.rasterize(150);
-
-    const output = raster.toDataURL();
-    // send to server
+    let output = raster.toDataURL('image/png');
+    output = output.replace(/^data:image\/(png|jpg);base64,/, "")
     console.log(output)
+
+    
+    
+   /* $.ajax({
+      type: 'POST',
+      url: 'http://127.0.0.1:5000/users/annotate',
+      data: '{ "imageData" : "' + output + '" }',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      success: function (msg) {
+          alert("Done, Picture Uploaded.");
+      }
+  });*/
     
 }
 
@@ -200,3 +213,4 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
   
 
 }
+

@@ -11,6 +11,7 @@ import { TrainingComponent } from '../training/training.component';
 import { TestingComponent } from '../testing/testing.component';
 
 
+
 @Component({
   selector: 'app-uploader',
   templateUrl: './uploader.component.html',
@@ -24,10 +25,10 @@ export class UploaderComponent implements OnInit {
   hasBaseDropZoneOver = false;
   imageURL: SafeUrl;
 
-  /*fileData: File = null;
-  previewUrl: any = null;
+  fileData: File = null;
+  previewUrl:any = null;
   fileUploadProgress: string = null;
-  uploadedFilePath: string = null;*/
+  uploadedFilePath: any;
 
   constructor(private sanitizer: DomSanitizer, private http: HttpClient, private router: Router, private auth: AuthenticationService, private _spinner: MatSnackBar, private _training: MatSnackBar, private _testing: MatSnackBar) { }
 
@@ -42,6 +43,7 @@ export class UploaderComponent implements OnInit {
     this.uploader = new FileUploader({
       url: 'http://127.0.0.1:5000/users/upload_cases',
       autoUpload: true
+      
     });
     this.uploader.onBeforeUploadItem = (fileItem: FileItem) => {
       this.uploading = true;
@@ -79,15 +81,57 @@ export class UploaderComponent implements OnInit {
   }
 
 
-  onSubmit() {
-    this.condition = true;
-    setTimeout(() => {
+  fileProgress(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
+    this.preview();
+}
+
+preview() {
+  var mimeType = this.fileData.type;
+  if (mimeType.match(/image\/*/ ) == null) {
+    return;
+  }
+  var reader = new FileReader();      
+  reader.readAsDataURL(this.fileData); 
+  reader.onload = (_event) => { 
+    this.previewUrl = reader.result; 
+  }
+}
+
+
+  onSubmit(){
+
+  const formData = new FormData();
+  formData.append('files', this.fileData);
+
+  this.uploader 
+
+  this.fileUploadProgress = '0%';
+
+  this.http.post('http://127.0.0.1:5000/users/upload_cases', formData, {
+    reportProgress: true,
+    observe: 'events'   
+  })
+  .subscribe(events => {
+    this.uploadedFilePath = this.fileData.name;
+    if(events.type === HttpEventType.UploadProgress) {
+      this.fileUploadProgress = Math.round(events.loaded / events.total * 100) + '%';
+      console.log(this.fileUploadProgress);
+    } else if(events.type === HttpEventType.Response) {
+      this.fileUploadProgress = '';
+    }
+       
+  }) 
+
+
+  this.condition = true;
+  setTimeout(() => {
       this._testing.openFromComponent(TestingComponent, {
         duration: this.durationInSeconds * 1000,
       });
     }, 15000);
 
-    this._training.openFromComponent(TrainingComponent, {
+  this._training.openFromComponent(TrainingComponent, {
       duration: this.durationInSeconds * 5000,
     });
 
@@ -97,12 +141,11 @@ export class UploaderComponent implements OnInit {
   navigate(): boolean {
     if (this.condition == true) {
       setTimeout(() => {
-        this.message = "View result";
+        this.message = 'View result';
       }, 20000);
-
       return true;
     }
-    else {
+    else{
       return false;
     }
   }

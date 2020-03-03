@@ -1,4 +1,4 @@
-<img src="assets/images/logo-mandy.png" class="center">
+<img src="assets/images/logo-mandy.png" class="center" style="margin-top:10%">
 <h1 align="center">R e s u l t &nbsp; &nbsp;f r o m &nbsp; &nbsp; M a n d y</h1>
 
 <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event">
@@ -8,7 +8,7 @@
 
     <!-- Order Column -->
     <ng-container matColumnDef="caseName">
-      <th mat-header-cell *matHeaderCellDef> Case </th>
+      <th mat-header-cell *matHeaderCellDef style="font-size: medium;"> Case </th>
       <td mat-cell *matCellDef="let case">
         {{case.caseName }}</td>
     </ng-container>
@@ -16,7 +16,7 @@
     <!-- Name Column -->
 
     <ng-container matColumnDef="imageSrc">
-      <th mat-header-cell *matHeaderCellDef> Image </th>
+      <th mat-header-cell *matHeaderCellDef style="font-size: medium;"> Image </th>
       <td mat-cell *matCellDef="let case">
         <a target="_blank" [href]="'http://localhost:5000/'+case.imageSrc"><img class="img"
             [src]="'http://localhost:5000/'+case.imageSrc" alt="images" style="width:150px"></a></td>
@@ -24,28 +24,32 @@
 
     <!-- Diagnosis Column -->
     <ng-container matColumnDef="diagnose">
-      <th mat-header-cell *matHeaderCellDef> Diagnosis </th>
+      <th mat-header-cell *matHeaderCellDef style="font-size: medium;"> Diagnosis </th>
       <td mat-cell *matCellDef="let case">
-        {{case.predDiags}} 
+        {{case.predDiags}}
       </td>
     </ng-container>
 
     <!-- Additional Column -->
     <ng-container matColumnDef="predDiags">
-      <th mat-header-cell *matHeaderCellDef> View detail </th>
-      <td mat-cell *matCellDef="let case"> <button mat-raised-button class="button" [routerLink]="['/', 'viewdetail', case.caseID]"
-      routerLinkActive="router-link-active"><mat-icon>bar_chart</mat-icon>View
-          Detail</button></td>
+      <th mat-header-cell *matHeaderCellDef style="font-size: medium;"> View detail </th>
+      <td mat-cell *matCellDef="let case"> <button mat-button class="button"
+          [routerLink]="['/', 'viewdetail', case.caseID]" routerLinkActive="router-link-active">
+          <mat-icon>bar_chart</mat-icon>
+        </button></td>
     </ng-container>
 
     <ng-container matColumnDef="annoDiags">
-      <th mat-header-cell *matHeaderCellDef> Annotate </th>
-      <td mat-cell *matCellDef="let case"> <button mat-raised-button class="button" [routerLink]="['/', 'annotate', case.caseID]"><mat-icon>border_color</mat-icon>Annotate</button> </td>
+      <th mat-header-cell *matHeaderCellDef style="font-size: medium;"> Annotate </th>
+      <td mat-cell *matCellDef="let case"> <button mat-button class="button"
+          [routerLink]="['/', 'annotate', case.caseID]">
+          <mat-icon>border_color</mat-icon>
+        </button> </td>
     </ng-container>
 
     <!-- Status Column -->
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef> Status </th>
+    <ng-container matColumnDef="status" >
+      <th mat-header-cell *matHeaderCellDef style="font-size: medium;"> Status </th>
       <td mat-cell *matCellDef="let case"> {{case.status}} </td>
     </ng-container>
 
