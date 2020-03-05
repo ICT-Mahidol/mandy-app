@@ -108,6 +108,9 @@ export class ViewdetailComponent implements OnInit {
   yAxisLabel: string = 'Prediction';
   showYAxisLabel: boolean = true;
   xAxisLabel: string = 'Percentage';
+  barPadding:number = 15
+  xScaleMax: number = 100;
+  
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA','Black','Blue','Pink','Orange']

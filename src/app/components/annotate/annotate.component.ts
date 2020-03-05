@@ -6,7 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessageComponent } from '../message/message.component';
 import { ParsedProperty } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
-//import * as html2canvas from 'html2canvas';
+import { async } from 'rxjs/internal/scheduler/async';
+// import * as html2canvas from 'html2canvas';
 
 
 interface Fracture {
@@ -29,8 +30,6 @@ interface FractureGroup {
 })
 export class AnnotateComponent implements OnInit, AfterViewInit {
 
-  
-
   @ViewChild('canvas', { static: true }) canvasElement: ElementRef;
 
   scope: paper.PaperScope;
@@ -43,6 +42,8 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
   drawLayer: paper.Layer;
 
   annotate: any;
+
+  Data: any;
 
   caseId: string;
   selectedName: string;
@@ -95,10 +96,12 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
     this.aRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.http.get('http://localhost:5000/users/get_annotate/' + paramMap.get('caseId')).subscribe((success) => {
         this.annotate = success;
-      })
+      });
     });
 
   }
+
+  // private context: CanvasRenderingContext2D;
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -115,17 +118,19 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
       this.drawLayer.activate();
       this.initTools();
     }, 500);
+
+    // this.context = (this.context = (this.canvasElement.nativeElement as HTMLCanvasElement).getContext('2d'));
+
   }
+
 
   initBackground() {
     const canvasEl = this.canvasElement.nativeElement;
     console.log(canvasEl);
     const imageEl = new Image();
-    //imageEl.crossOrigin = '*';  //<-- set here
+    // imageEl.crossOrigin = '*';  //<-- set here
     imageEl.src = 'http://localhost:5000/' + this.annotate;
    // imageEl.setAttribute('crossorigin', 'anonymous');
-
-   
 
     imageEl.onload = (ev: Event) => {
       const scale = Math.min(
@@ -138,13 +143,12 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
     };
   }
 
+
   onDelete() {
     this.drawLayer.removeChildren();
   }
 
   initTools() {
-
-
     this.brushTool = new paper.Tool();
 
     this.brushTool.minDistance = 1.0;
@@ -172,45 +176,33 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
         this.activePath.simplify(1.5);
       }
     };
-
-
-
   }
 
-  onBack() {
+onBack() {
     this.router.navigateByUrl('/table');
   }
 
-  
-  onSubmit() {
+async onSubmit() {
     this.message.openFromComponent(MessageComponent, {
       duration: this.durationInSeconds * 1000,
     });
     const raster = this.drawLayer.rasterize(150);
-    let output = raster.toDataURL('image/png');
-    output = output.replace(/^data:image\/(png|jpg);base64,/, "")
-    console.log(output)
+    const output = raster.toDataURL();
 
-    
-    
-   /* $.ajax({
-      type: 'POST',
-      url: 'http://127.0.0.1:5000/users/annotate',
-      data: '{ "imageData" : "' + output + '" }',
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json',
-      success: function (msg) {
-          alert("Done, Picture Uploaded.");
-      }
-  });*/
-    
+    this.aRoute.paramMap.subscribe((paramMap: ParamMap) => {
+        this.Data = {ID: paramMap.get('caseId'), Name: this.selectedName, File: output};
+        this.http.post('http://127.0.0.1:5000/users/upload_annotate', this.Data );
+       });
+      
+    console.log(output);
+    console.log(this.selectedName);
 }
 
   onNameSelection() {
-    console.log(this.selectedName);
+   
   }
 
-  
+
 
 }
 

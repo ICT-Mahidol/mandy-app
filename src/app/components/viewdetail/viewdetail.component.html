@@ -50,8 +50,8 @@
 <ng-container *ngIf="dataSource">
   <ngx-charts-bar-horizontal class="form" [view]="view" [scheme]="colorScheme" [results]="dataSource"
     [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
-    [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel" (select)="onSelect($event)" (activate)="onActivate($event)"
+    [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [xScaleMax]="xScaleMax"
+    [yAxisLabel]="yAxisLabel" [barPadding]="barPadding"  (select)="onSelect($event)" (activate)="onActivate($event)" 
     (deactivate)="onDeactivate($event)">
   </ngx-charts-bar-horizontal>
 </ng-container>

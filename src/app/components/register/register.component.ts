@@ -26,7 +26,7 @@ export class RegisterComponent {
     
     this.auth.register(this.credentials).subscribe(
       () => {
-        console.log("eiei");
+        
         this.router.navigateByUrl('/login');
         
       },

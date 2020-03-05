@@ -1,11 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
-import { Case } from '../models/models';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { Router } from '@angular/router';
-
+import { MatPaginator } from '@angular/material';
+import {MatTableDataSource} from '@angular/material/table';
 
 /**
  * @title Table with sticky header
@@ -16,31 +13,23 @@ import { Router } from '@angular/router';
   styleUrls: ['table.component.scss'],
   templateUrl: 'table.component.html',
 })
-// tslint:disable-next-line: component-class-suffix
+
 export class TableComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
   displayedColumns = ['caseName', 'imageSrc', 'diagnose', 'predDiags', 'annoDiags', 'status'];
+  
+  
+  dataSource: any;
 
-  dataSource: any
-
-
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
-  case: Case
-  // MatPaginator Output
-
-
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-  }
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  
   ngOnInit() {
-
     this.http.get("http://localhost:5000/users/get_cases").subscribe((success) => {
     this.dataSource = success;
+   
     });
   }
-
+ 
   onAnnotate() {
     this.router.navigateByUrl('/annotate')
   }

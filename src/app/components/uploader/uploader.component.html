@@ -1,69 +1,88 @@
-
-
 <h1 align="center" style="margin-top:10%">W E L C O M E &nbsp; &nbsp;T O&nbsp;&nbsp; M A N D Y</h1>
 <div>
+  <div class="content" ng2FileDrop [uploader]="uploader" (dragenter)="fileOver($event)" (dragleave)="fileLeave($event)"
+    [ngClass]="{'drop-zone-file-over': hasFileOver}">
+    <div class="drop-zone-container">
+      <div class="drop-zone-content">
+        <br>
 
-  <div class=box>
-    <div *ngIf="previewUrl">
-      <img [src]="previewUrl" class="img">
-    </div>
-    <mat-icon class="mat-icon" *ngIf="!previewUrl">image</mat-icon>
-  </div>
-<!----
-  <div class="input-group col-md-6" style="margin-left: 25%;">
-    <div class = "custom-file">
-      <input type="file"  id="inputGroupFile02 " (change)="fileProgress($event)">
-      <label class="custom-file-label" *ngIf="!uploadedFilePath" for="inputGroupFile02">Choose file or Drop file here to upload</label>
-      <label class="custom-file-label" *ngIf="uploadedFilePath" for="inputGroupFile02"> {{uploadedFilePath}}</label>
+        <div class=box>
+          <mat-icon class="mat-icon" *ngIf="!imageURL">image</mat-icon>
+          <img *ngIf="imageURL" class="img" [src]="imageURL" alt="images">
+        </div>
+      </div>
     </div>
   </div>
--->
+
 
   <div class="input-group col-md-6" style="margin-left: 25%;">
     <div class="custom-file">
-      <input type="file" class="custom-file-input" id="inputGroupFile01"aria-describedby="inputGroupFileAddon01" (change)="fileProgress($event)">
-      <label class="custom-file-label" *ngIf="!uploadedFilePath" for="inputGroupFile01">Choose file or Drop file here to upload</label>
-      <label class="custom-file-label"  *ngIf="uploadedFilePath" for="inputGroupFile01">{{uploadedFilePath}}</label>   
+      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+        ng2FileSelect [uploader]="uploader">
+      <label class="custom-file-label" *ngIf="!uploadedFilePath" for="inputGroupFile01">Choose file or Drop file here to
+        upload</label>
+      <label class="custom-file-label" *ngIf="uploadedFilePath" for="inputGroupFile01">{{ item?.file?.name }}</label>
     </div>
   </div>
-  
 
- <!---<input type="file" name="image" (change)="fileProgress($event)">-->
-  <div *ngIf="fileUploadProgress">
-    <br>
-    <h6 align = "center"> Upload progress: {{ fileUploadProgress }}</h6>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Patient name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+      placeholder="Input your patient name"  [(ngModel)] ="patient">
+    <small id="emailHelp" class="form-text text-muted">Optional</small>
   </div>
 
+  <br>
+  <br>
+  <div style="margin-left:20%">
+    <div class="col-md-9" style="align-content: center">
+      <h3>Upload queue</h3>
+      <p>Queue length: {{ uploader?.queue?.length }}</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="50%">Name</th>
+            <th>Size</th>
+            <th>Upload Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of uploader.queue">
+            <td><strong>{{ item?.file?.name }}</strong></td>
+            <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+            <td *ngIf="uploader.options.isHTML5">
+              <div class="progress" style="margin-bottom: 0;">
+                <div class="progress-bar" style="padding-top:10%" role="progressbar"
+                  [ngStyle]="{ 'width': item.progress + '%' }">
+                  <p>{{item.progress}}%'</p>
+                </div>
+              </div>
+            </td>
+            <td class="text-center">
+              <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+              <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+              <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
 
 
+
+  </div>
 </div>
 
 
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    
-    <div class="content" ng2FileDrop [uploader]="uploader" (dragenter)="fileOver($event)"
-      (dragleave)="fileLeave($event)" [ngClass]="{'drop-zone-file-over': hasFileOver}">
-      <div class="drop-zone-container">
-        <div class="drop-zone-content">
-          <br>
-
-          <div class=box>
-            <mat-icon class="mat-icon" *ngIf="!imageURL">save_alt</mat-icon>
-            <p class="align" *ngIf="!imageURL">Drop files here to upload.</p>
-            <img *ngIf="imageURL" class="img" [src]="imageURL" alt="images">
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    
-
 
     <div class="block">
       <div class="spacer"></div>
       <button class="btn btn-success button" *ngIf="!navigate()" (click)="onSubmit()">Submit</button>
-      <button class="btn btn-success button" *ngIf="navigate()" (click)="onResult()">{{message}}</button>
+      <button class="btn btn-success button" *ngIf="navigate()" (click)="onResult()">{{response}}</button>
       <div class="spacer"></div>
     </div>
 

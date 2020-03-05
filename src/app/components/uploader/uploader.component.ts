@@ -24,11 +24,10 @@ export class UploaderComponent implements OnInit {
   uploading = false;
   hasBaseDropZoneOver = false;
   imageURL: SafeUrl;
+  response: string;
 
-  fileData: File = null;
-  previewUrl:any = null;
-  fileUploadProgress: string = null;
-  uploadedFilePath: any;
+  public patient: string;
+  
 
   constructor(private sanitizer: DomSanitizer, private http: HttpClient, private router: Router, private auth: AuthenticationService, private _spinner: MatSnackBar, private _training: MatSnackBar, private _testing: MatSnackBar) { }
 
@@ -43,13 +42,11 @@ export class UploaderComponent implements OnInit {
     this.uploader = new FileUploader({
       url: 'http://127.0.0.1:5000/users/upload_cases',
       autoUpload: true
-      
     });
     this.uploader.onBeforeUploadItem = (fileItem: FileItem) => {
       this.uploading = true;
       this.hasBaseDropZoneOver = false;
       this.imageURL = this.sanitizer.bypassSecurityTrustUrl((window.URL.createObjectURL(fileItem._file)));
-      // console.log(fileItem);
     };
     this.uploader.onSuccessItem = (fileItem: FileItem) => {
       console.log(fileItem);
@@ -58,7 +55,12 @@ export class UploaderComponent implements OnInit {
     // this.uploader.onAfterAddingFile = (fileItem: FileItem) => {
     //   console.log(fileItem);
     // }
+    this.response = '';
+ 
+    this.uploader.response.subscribe( res => this.response = res );
+    
   }
+
   fileOver(e: any) {
     e.stopPropagation();
     e.preventDefault();
@@ -81,68 +83,26 @@ export class UploaderComponent implements OnInit {
   }
 
 
-  fileProgress(fileInput: any) {
-    this.fileData = <File>fileInput.target.files[0];
-    this.preview();
-}
-
-preview() {
-  var mimeType = this.fileData.type;
-  if (mimeType.match(/image\/*/ ) == null) {
-    return;
-  }
-  var reader = new FileReader();      
-  reader.readAsDataURL(this.fileData); 
-  reader.onload = (_event) => { 
-    this.previewUrl = reader.result; 
-  }
-}
-
-
   onSubmit(){
-
-  const formData = new FormData();
-  formData.append('files', this.fileData);
-
-  this.uploader 
-
-  this.fileUploadProgress = '0%';
-
-  this.http.post('http://127.0.0.1:5000/users/upload_cases', formData, {
-    reportProgress: true,
-    observe: 'events'   
-  })
-  .subscribe(events => {
-    this.uploadedFilePath = this.fileData.name;
-    if(events.type === HttpEventType.UploadProgress) {
-      this.fileUploadProgress = Math.round(events.loaded / events.total * 100) + '%';
-      console.log(this.fileUploadProgress);
-    } else if(events.type === HttpEventType.Response) {
-      this.fileUploadProgress = '';
+    this.condition = true;
+    if (this.condition)
+    {
+      this.navigate()
     }
-       
-  }) 
-
-
-  this.condition = true;
   setTimeout(() => {
       this._testing.openFromComponent(TestingComponent, {
         duration: this.durationInSeconds * 1000,
       });
-    }, 15000);
+    }, 1000);
 
   this._training.openFromComponent(TrainingComponent, {
-      duration: this.durationInSeconds * 5000,
+      duration: this.durationInSeconds * 1000,
     });
-
-
+    console.log(this.patient);
   }
 
   navigate(): boolean {
     if (this.condition == true) {
-      setTimeout(() => {
-        this.message = 'View result';
-      }, 20000);
       return true;
     }
     else{
@@ -154,7 +114,7 @@ preview() {
   onResult() {
 
     this._testing.openFromComponent(SpinnerComponent, {
-      duration: this.durationInSeconds * 1000,
+      duration: this.durationInSeconds * 5,
     });
 
   }
