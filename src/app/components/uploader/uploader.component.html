@@ -24,11 +24,11 @@
       <label class="custom-file-label" *ngIf="uploadedFilePath" for="inputGroupFile01">{{ item?.file?.name }}</label>
     </div>
   </div>
-
-  <div class="form-group">
+<br>
+  <div class="form-group col-md-6" style="margin-left: 25%;">
     <label for="exampleInputEmail1">Patient name</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-      placeholder="Input your patient name"  [(ngModel)] ="patient">
+      placeholder="Input your patient name" [(ngModel)]="patient">
     <small id="emailHelp" class="form-text text-muted">Optional</small>
   </div>
 
@@ -36,7 +36,7 @@
   <br>
   <div style="margin-left:20%">
     <div class="col-md-9" style="align-content: center">
-      <h3>Upload queue</h3>
+      <h3>Upload Progress</h3>
       <p>Queue length: {{ uploader?.queue?.length }}</p>
 
       <table class="table">
@@ -44,7 +44,7 @@
           <tr>
             <th width="50%">Name</th>
             <th>Size</th>
-            <th>Upload Progress</th>
+            <th>Progress</th>
           </tr>
         </thead>
         <tbody>
@@ -64,97 +64,98 @@
               <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
               <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
             </td>
-          </tr>
+
         </tbody>
       </table>
 
     </div>
-
-
-
   </div>
 </div>
 
+<br>
+<br>
+<div class="col-md-9" style="align-content: center">
+  <div class="progress" style="margin-bottom: 0">
+    <div class="progress-bar" style="padding-top:20%" role="progressbar" [ngStyle]="{ 'width': progress + '%' }">
+    </div>
+  </div>
+  <p *ngIf="navigate()" align="center">Upload Progress {{progress}} %</p>
+</div>
 
 <div class="row">
-  <div class="col-md-6 offset-md-3">
-
-    <div class="block">
-      <div class="spacer"></div>
+  <div class="block">
+    <div class="spacer"></div>
       <button class="btn btn-success button" *ngIf="!navigate()" (click)="onSubmit()">Submit</button>
       <button class="btn btn-success button" *ngIf="navigate()" (click)="onResult()">{{response}}</button>
       <div class="spacer"></div>
     </div>
-
-    <mat-divider></mat-divider>
-  </div>
 </div>
 
+<mat-divider></mat-divider>
+  <h6 class="text">Locations of Mandibular Fracture</h6>
+  <div class="container">
 
-<h6 class="text">Locations of Mandibular Fracture</h6>
-<div class="container">
+    <div class="spacer"></div>
+    <div>
+      <mat-card class="example-card">
+        <img mat-card-image src="assets/images/fracture.PNG">
+      </mat-card>
+    </div>
 
-  <div class="spacer"></div>
-  <div>
-    <mat-card class="example-card">
-      <img mat-card-image src="assets/images/fracture.PNG">
-    </mat-card>
+    <div class="item">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Left (Lt.)
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+
+          Lt. Condylar fx
+          <mat-divider></mat-divider>
+          Lt. Coronoid fx
+          <mat-divider></mat-divider>
+          Lt. Ramus-Angle fx
+          <mat-divider></mat-divider>
+          Lt. Body fx
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Right (Rt.)
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+
+
+          Rt. Condylar fx
+          <mat-divider></mat-divider>
+          Rt. Coronoid fx
+          <mat-divider></mat-divider>
+          Rt. Ramus-Angle fx
+          <mat-divider></mat-divider>
+          Rt. Body fx
+
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Middle
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+
+          Symphaseal
+          <mat-divider></mat-divider>
+          Paraymphaseal
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="spacer"></div>
+
+
   </div>
-
-  <div class="item">
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Left (Lt.)
-          </mat-panel-title>
-
-        </mat-expansion-panel-header>
-
-        Lt. Condylar fx
-        <mat-divider></mat-divider>
-        Lt. Coronoid fx
-        <mat-divider></mat-divider>
-        Lt. Ramus-Angle fx
-        <mat-divider></mat-divider>
-        Lt. Body fx
-
-      </mat-expansion-panel>
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Right (Rt.)
-          </mat-panel-title>
-
-        </mat-expansion-panel-header>
-
-
-        Rt. Condylar fx
-        <mat-divider></mat-divider>
-        Rt. Coronoid fx
-        <mat-divider></mat-divider>
-        Rt. Ramus-Angle fx
-        <mat-divider></mat-divider>
-        Rt. Body fx
-
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Middle
-          </mat-panel-title>
-
-        </mat-expansion-panel-header>
-
-        Symphaseal
-        <mat-divider></mat-divider>
-        Paraymphaseal
-
-      </mat-expansion-panel>
-    </mat-accordion>
-  </div>
-  <div class="spacer"></div>
-
-
-</div>

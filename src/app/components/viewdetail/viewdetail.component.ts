@@ -19,7 +19,7 @@ export class ViewdetailComponent implements OnInit {
   res_label: any
   selectedName: string;
 
-  displayedColumns = ['caseName', 'imageSrc'];
+  displayedColumns = ['caseName', 'imageSrc','Patient'];
   dataSource: any;
   caseId: string;
   grad: any;

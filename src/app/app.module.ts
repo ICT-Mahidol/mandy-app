@@ -58,6 +58,8 @@ import { MessageComponent } from './components/message/message.component';
 
 
 
+import { MatInputModule }  from '@angular/material';
+
 
 
 @NgModule({
@@ -105,7 +107,8 @@ import { MessageComponent } from './components/message/message.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatSelectModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatInputModule 
   ],
   providers: [AuthenticationService, AuthGuardService],
   bootstrap: [AppComponent]

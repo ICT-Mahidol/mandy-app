@@ -7,8 +7,9 @@ import { MessageComponent } from '../message/message.component';
 import { ParsedProperty } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
 import { async } from 'rxjs/internal/scheduler/async';
-// import * as html2canvas from 'html2canvas';
-
+//import { Post } from './model/post';
+import { Observable, pipe } from "rxjs";
+import { map } from "rxjs/operators";
 
 interface Fracture {
   value: string;
@@ -40,6 +41,9 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
   erasePath: paper.Path;
   backgroudLayer: paper.Layer;
   drawLayer: paper.Layer;
+
+  //posts: Observable<Post[]>
+  //model: Post = new Post()
 
   annotate: any;
 
@@ -182,7 +186,7 @@ onBack() {
     this.router.navigateByUrl('/table');
   }
 
-async onSubmit() {
+onSubmit() {
     this.message.openFromComponent(MessageComponent, {
       duration: this.durationInSeconds * 1000,
     });
@@ -190,9 +194,14 @@ async onSubmit() {
     const output = raster.toDataURL();
 
     this.aRoute.paramMap.subscribe((paramMap: ParamMap) => {
-        this.Data = {ID: paramMap.get('caseId'), Name: this.selectedName, File: output};
-        this.http.post('http://127.0.0.1:5000/users/upload_annotate', this.Data );
+        this.Data = {'ID': paramMap.get('caseId'), 'Name': this.selectedName, 'File': output};
+        this.http.post("http://127.0.0.1:5000/users/upload_annotate", this.Data).pipe(map(res => "done")).subscribe();
+   
        });
+   /* this.Data = {'ID': 1, 'Name': this.selectedName, 'File': output};
+    this.http.post('http://127.0.0.1:5000/users/upload_annotate', JSON.stringify(this.Data));*/
+
+    
       
     console.log(output);
     console.log(this.selectedName);

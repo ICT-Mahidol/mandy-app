@@ -9,7 +9,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { TrainingComponent } from '../training/training.component';
 import { TestingComponent } from '../testing/testing.component';
-
+import { Observable, pipe } from "rxjs";
+import { map } from "rxjs/operators";
 
 
 @Component({
@@ -25,8 +26,10 @@ export class UploaderComponent implements OnInit {
   hasBaseDropZoneOver = false;
   imageURL: SafeUrl;
   response: string;
+  Data:any;
 
   public patient: string;
+  progress: number;
   
 
   constructor(private sanitizer: DomSanitizer, private http: HttpClient, private router: Router, private auth: AuthenticationService, private _spinner: MatSnackBar, private _training: MatSnackBar, private _testing: MatSnackBar) { }
@@ -57,9 +60,10 @@ export class UploaderComponent implements OnInit {
     // }
     this.response = '';
  
-    this.uploader.response.subscribe( res => this.response = res );
+    this.uploader.response.subscribe( res => this.response = res)
     
   }
+    
 
   fileOver(e: any) {
     e.stopPropagation();
@@ -89,16 +93,23 @@ export class UploaderComponent implements OnInit {
     {
       this.navigate()
     }
-  setTimeout(() => {
+    setTimeout(() => {
       this._testing.openFromComponent(TestingComponent, {
         duration: this.durationInSeconds * 1000,
-      });
+      }),
+      // tslint:disable-next-line: deprecation
+      this.progress = Math.round(90 / 100 * 100);
     }, 1000);
 
-  this._training.openFromComponent(TrainingComponent, {
+    
+    this._training.openFromComponent(TrainingComponent, {
       duration: this.durationInSeconds * 1000,
     });
+
+    this.progress = Math.round(50 /100 * 100);
     console.log(this.patient);
+    this.Data = {'Name':this.patient}
+    //this.http.post("http://127.0.0.1:5000/users/upload_patient", this.Data).pipe(map(res => "done")).subscribe();
   }
 
   navigate(): boolean {
