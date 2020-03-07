@@ -76,7 +76,7 @@
 <br>
 <div class="col-md-9" style="align-content: center">
   <div class="progress" style="margin-bottom: 0">
-    <div class="progress-bar" style="padding-top:20%" role="progressbar" [ngStyle]="{ 'width': progress + '%' }">
+    <div class="progress-bar" style="padding-top:20%" role="progressbar" [ngStyle]="{'width': progress + '%'}">
     </div>
   </div>
   <p *ngIf="navigate()" align="center">Upload Progress {{progress}} %</p>
@@ -86,7 +86,7 @@
   <div class="block">
     <div class="spacer"></div>
       <button class="btn btn-success button" *ngIf="!navigate()" (click)="onSubmit()">Submit</button>
-      <button class="btn btn-success button" *ngIf="navigate()" (click)="onResult()">{{response}}</button>
+      <!--<button class="btn btn-success button" *ngIf="navigate()" (click)="onResult()">Result</button>-->
       <div class="spacer"></div>
     </div>
 </div>

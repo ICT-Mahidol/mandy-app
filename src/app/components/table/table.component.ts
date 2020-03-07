@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { objectInstruction } from '@webassemblyjs/ast';
+import { SpinnerComponent } from '../spinner/spinner.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 /**
  * @title Table with sticky header
  */
@@ -27,9 +29,10 @@ export interface Case {
 })
 
 export class TableComponent implements OnInit {
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private spinner:MatSnackBar) { }
   displayedColumns = ['caseName', 'imageSrc', 'diagnose', 'predDiags', 'annoDiags', 'status'];
   dataSource: MatTableDataSource<Case>;
+  durationInSeconds = 5;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -38,6 +41,11 @@ export class TableComponent implements OnInit {
   
   
   ngOnInit() {
+
+    this.spinner.openFromComponent(SpinnerComponent, {
+      duration: this.durationInSeconds * 100,
+    });
+
     this.http.get("http://localhost:5000/users/get_cases").subscribe((success) => {
     //Object.assign(this.dataSource,success)
     //this.dataSource = success;

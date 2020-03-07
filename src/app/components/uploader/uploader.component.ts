@@ -4,7 +4,7 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authen/authentication.service';
 import { timeout } from 'rxjs/operators';
-import { SpinnerComponent } from '../spinner/spinner.component';
+//import { SpinnerComponent } from '../spinner/spinner.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { TrainingComponent } from '../training/training.component';
@@ -27,9 +27,11 @@ export class UploaderComponent implements OnInit {
   imageURL: SafeUrl;
   response: string;
   Data:any;
+  Obj :any
 
   public patient: string;
   progress: number;
+  
   
 
   constructor(private sanitizer: DomSanitizer, private http: HttpClient, private router: Router, private auth: AuthenticationService, private _spinner: MatSnackBar, private _training: MatSnackBar, private _testing: MatSnackBar) { }
@@ -52,15 +54,16 @@ export class UploaderComponent implements OnInit {
       this.imageURL = this.sanitizer.bypassSecurityTrustUrl((window.URL.createObjectURL(fileItem._file)));
     };
     this.uploader.onSuccessItem = (fileItem: FileItem) => {
-      console.log(fileItem);
-
+      this.uploader.response.subscribe( res => this.progress = res, this.router.navigateByUrl('/table'));
+      //console.log(fileItem);
     };
     // this.uploader.onAfterAddingFile = (fileItem: FileItem) => {
     //   console.log(fileItem);
     // }
+
+
     this.response = '';
- 
-    this.uploader.response.subscribe( res => this.response = res)
+   // this.uploader.response.subscribe( res => this.progress = res, this.router.navigateByUrl('/table'));
     
   }
     
@@ -87,29 +90,34 @@ export class UploaderComponent implements OnInit {
   }
 
 
-  onSubmit(){
+  async onSubmit(){
     this.condition = true;
     if (this.condition)
     {
       this.navigate()
     }
+    
+   // tslint:disable-next-line: semicolon
+   
+
     setTimeout(() => {
       this._testing.openFromComponent(TestingComponent, {
-        duration: this.durationInSeconds * 1000,
+        duration: this.durationInSeconds * 2000,
       }),
       // tslint:disable-next-line: deprecation
       this.progress = Math.round(90 / 100 * 100);
-    }, 1000);
+    }, 2000);
 
     
     this._training.openFromComponent(TrainingComponent, {
-      duration: this.durationInSeconds * 1000,
+      duration: this.durationInSeconds * 2000,
     });
 
     this.progress = Math.round(50 /100 * 100);
     console.log(this.patient);
-    this.Data = {'Name':this.patient}
+    this.Data = {'Name': this.patient}
     //this.http.post("http://127.0.0.1:5000/users/upload_patient", this.Data).pipe(map(res => "done")).subscribe();
+
   }
 
   navigate(): boolean {
@@ -122,11 +130,11 @@ export class UploaderComponent implements OnInit {
   }
 
 
-  onResult() {
+  /*onResult() {
 
     this._testing.openFromComponent(SpinnerComponent, {
       duration: this.durationInSeconds * 5,
     });
 
-  }
+  }*/
 }
