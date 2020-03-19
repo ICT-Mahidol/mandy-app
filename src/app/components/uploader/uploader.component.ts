@@ -4,13 +4,13 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authen/authentication.service';
 import { timeout } from 'rxjs/operators';
-//import { SpinnerComponent } from '../spinner/spinner.component';
+import { SpinnerComponent } from '../spinner/spinner.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { TrainingComponent } from '../training/training.component';
 import { TestingComponent } from '../testing/testing.component';
 import { Observable, pipe } from "rxjs";
-import { map } from "rxjs/operators";
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -26,15 +26,22 @@ export class UploaderComponent implements OnInit {
   hasBaseDropZoneOver = false;
   imageURL: SafeUrl;
   response: string;
-  Data:any;
-  Obj :any
-
+  Data: any;
   public patient: string;
   progress: number;
-  
-  
 
-  constructor(private sanitizer: DomSanitizer, private http: HttpClient, private router: Router, private auth: AuthenticationService, private _spinner: MatSnackBar, private _training: MatSnackBar, private _testing: MatSnackBar) { }
+
+
+constructor(private sanitizer: DomSanitizer,
+            private http: HttpClient,
+            private router: Router,
+            private auth: AuthenticationService,
+            // tslint:disable-next-line: variable-name
+            private _spinner: MatSnackBar,
+            // tslint:disable-next-line: variable-name
+            private _training: MatSnackBar,
+            // tslint:disable-next-line: variable-name
+            private _testing: MatSnackBar) { }
 
   durationInSeconds = 5;
 
@@ -54,19 +61,16 @@ export class UploaderComponent implements OnInit {
       this.imageURL = this.sanitizer.bypassSecurityTrustUrl((window.URL.createObjectURL(fileItem._file)));
     };
     this.uploader.onSuccessItem = (fileItem: FileItem) => {
-      this.uploader.response.subscribe( res => this.progress = res, this.router.navigateByUrl('/table'));
-      //console.log(fileItem);
+      this.uploader.response.subscribe(res => {
+        console.log(res);
+      });
+      this.router.navigateByUrl('/table');
     };
     // this.uploader.onAfterAddingFile = (fileItem: FileItem) => {
     //   console.log(fileItem);
     // }
-
-
-    this.response = '';
-   // this.uploader.response.subscribe( res => this.progress = res, this.router.navigateByUrl('/table'));
-    
   }
-    
+
 
   fileOver(e: any) {
     e.stopPropagation();
@@ -90,51 +94,36 @@ export class UploaderComponent implements OnInit {
   }
 
 
-  async onSubmit(){
+  async onSubmit() {
     this.condition = true;
-    if (this.condition)
-    {
-      this.navigate()
+    if (this.condition) {
+      this.navigate();
     }
-    
-   // tslint:disable-next-line: semicolon
-   
 
     setTimeout(() => {
       this._testing.openFromComponent(TestingComponent, {
         duration: this.durationInSeconds * 2000,
       }),
-      // tslint:disable-next-line: deprecation
-      this.progress = Math.round(90 / 100 * 100);
+        this.progress = 90;
     }, 2000);
 
-    
     this._training.openFromComponent(TrainingComponent, {
       duration: this.durationInSeconds * 2000,
     });
 
-    this.progress = Math.round(50 /100 * 100);
+    this.progress = 50;
+
     console.log(this.patient);
-    this.Data = {'Name': this.patient}
-    //this.http.post("http://127.0.0.1:5000/users/upload_patient", this.Data).pipe(map(res => "done")).subscribe();
+    this.Data = {Name: this.patient}
+    // this.http.post("http://127.0.0.1:5000/users/upload_patient", this.Data).pipe(map(res => "done")).subscribe();
 
   }
 
   navigate(): boolean {
-    if (this.condition == true) {
+    if (this.condition === true) {
       return true;
-    }
-    else{
+    } else {
       return false;
     }
   }
-
-
-  /*onResult() {
-
-    this._testing.openFromComponent(SpinnerComponent, {
-      duration: this.durationInSeconds * 5,
-    });
-
-  }*/
 }

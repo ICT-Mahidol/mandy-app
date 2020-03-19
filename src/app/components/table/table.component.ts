@@ -36,24 +36,16 @@ export class TableComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  
-
-  
-  
   ngOnInit() {
 
     this.spinner.openFromComponent(SpinnerComponent, {
       duration: this.durationInSeconds * 100,
     });
 
-    this.http.get("http://localhost:5000/users/get_cases").subscribe((success) => {
-    //Object.assign(this.dataSource,success)
-    //this.dataSource = success;
-     
+    this.http.get('http://localhost:5000/users/get_cases').subscribe((success) => {
     this.dataSource = new MatTableDataSource(Object.assign(success));
     this.dataSource.paginator = this.paginator;
-   
-    });
+   });
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -4,28 +4,31 @@
 <h1 align="center">Annotate</h1>
 
 <div class="margin">
-<h4 align="center">Annotate Fracture Location</h4>
-<button mat-mini-fab class="undo"(click)="onDelete()"><mat-icon>delete</mat-icon></button>
+  <h4 align="center">Annotate Fracture Location</h4>
+  <button mat-mini-fab class="undo" (click)="onDelete()">
+    <mat-icon>delete</mat-icon>
+  </button>
 
-<div class="canvas-container">
-  <canvas id="canvas" #canvas></canvas>
-</div>
+  <div class="canvas-container">
+    <canvas id="canvas" #canvas></canvas>
+  </div>
 </div>
 
 <h4 align="center">Annotate Fracture Name</h4>
 
 <div class="align">
   <mat-card class="example-card">
-<mat-form-field >
-  <mat-label>Select your fracture name</mat-label>
-  <mat-select [formControl]="fractureControl" panelClass="panel" [(ngModel)]="selectedName" (ngModelChange)="onNameSelection()">
-    <mat-optgroup *ngFor="let group of fractureGroups" [label]="group.name" [disabled]="group.disabled">
-      <mat-option *ngFor="let fracture of group.fracture" [value]="fracture.value">
-        {{fracture.viewValue}}
-      </mat-option>
-    </mat-optgroup>
-  </mat-select>
-</mat-form-field>
-</mat-card>
+    <mat-form-field>
+      <mat-label>Select your fracture name</mat-label>
+      <mat-select [formControl]="fractureControl" panelClass="panel" [(ngModel)]="selectedName"
+        (ngModelChange)="onNameSelection()">
+        <mat-optgroup *ngFor="let group of fractureGroups" [label]="group.name" [disabled]="group.disabled">
+          <mat-option *ngFor="let fracture of group.fracture" [value]="fracture.value">
+            {{fracture.viewValue}}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+  </mat-card>
 </div>
 <button class="btn btn-success button" (click)="onSubmit()">Confirm</button>

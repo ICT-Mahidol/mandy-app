@@ -24,7 +24,7 @@
       <label class="custom-file-label" *ngIf="uploadedFilePath" for="inputGroupFile01">{{ item?.file?.name }}</label>
     </div>
   </div>
-<br>
+  <br>
   <div class="form-group col-md-6" style="margin-left: 25%;">
     <label for="exampleInputEmail1">Patient name</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -72,6 +72,8 @@
   </div>
 </div>
 
+<mat-spinner *ngIf="navigate()" color="warn"></mat-spinner>
+<br>
 <br>
 <br>
 <div class="col-md-9" style="align-content: center">
@@ -85,77 +87,77 @@
 <div class="row">
   <div class="block">
     <div class="spacer"></div>
-      <button class="btn btn-success button" *ngIf="!navigate()" (click)="onSubmit()">Submit</button>
-      <!--<button class="btn btn-success button" *ngIf="navigate()" (click)="onResult()">Result</button>-->
-      <div class="spacer"></div>
-    </div>
+    <button class="btn btn-success button" *ngIf="!navigate()" (click)="onSubmit()">Submit</button>
+    <!--<button class="btn btn-success button" *ngIf="navigate()" (click)="onResult()">Result</button>-->
+    <div class="spacer"></div>
+  </div>
 </div>
 
 <mat-divider></mat-divider>
-  <h6 class="text">Locations of Mandibular Fracture</h6>
-  <div class="container">
+<h6 class="text">Locations of Mandibular Fracture</h6>
+<div class="container">
 
-    <div class="spacer"></div>
-    <div>
-      <mat-card class="example-card">
-        <img mat-card-image src="assets/images/fracture.PNG">
-      </mat-card>
-    </div>
-
-    <div class="item">
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Left (Lt.)
-            </mat-panel-title>
-
-          </mat-expansion-panel-header>
-
-          Lt. Condylar fx
-          <mat-divider></mat-divider>
-          Lt. Coronoid fx
-          <mat-divider></mat-divider>
-          Lt. Ramus-Angle fx
-          <mat-divider></mat-divider>
-          Lt. Body fx
-
-        </mat-expansion-panel>
-
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Right (Rt.)
-            </mat-panel-title>
-
-          </mat-expansion-panel-header>
-
-
-          Rt. Condylar fx
-          <mat-divider></mat-divider>
-          Rt. Coronoid fx
-          <mat-divider></mat-divider>
-          Rt. Ramus-Angle fx
-          <mat-divider></mat-divider>
-          Rt. Body fx
-
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Middle
-            </mat-panel-title>
-
-          </mat-expansion-panel-header>
-
-          Symphaseal
-          <mat-divider></mat-divider>
-          Paraymphaseal
-
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-    <div class="spacer"></div>
-
-
+  <div class="spacer"></div>
+  <div>
+    <mat-card class="example-card">
+      <img mat-card-image src="assets/images/fracture.PNG">
+    </mat-card>
   </div>
+
+  <div class="item">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Left (Lt.)
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        Lt. Condylar fx
+        <mat-divider></mat-divider>
+        Lt. Coronoid fx
+        <mat-divider></mat-divider>
+        Lt. Ramus-Angle fx
+        <mat-divider></mat-divider>
+        Lt. Body fx
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Right (Rt.)
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+
+        Rt. Condylar fx
+        <mat-divider></mat-divider>
+        Rt. Coronoid fx
+        <mat-divider></mat-divider>
+        Rt. Ramus-Angle fx
+        <mat-divider></mat-divider>
+        Rt. Body fx
+
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Middle
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        Symphaseal
+        <mat-divider></mat-divider>
+        Paraymphaseal
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="spacer"></div>
+
+
+</div>
