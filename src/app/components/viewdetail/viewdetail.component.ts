@@ -109,7 +109,7 @@ export class ViewdetailComponent implements OnInit {
   
 
   colorScheme = {
-domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA','#663399','#6495ED','Pink','#F08080']
+domain: ['#3CB371', '#CD5C5C', '#DAA520', '#778899','#9370DB','#6495ED','#48D1CC','#FA8072','#FFDAB9']
   };
 
 
