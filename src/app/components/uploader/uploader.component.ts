@@ -32,16 +32,16 @@ export class UploaderComponent implements OnInit {
 
 
 
-constructor(private sanitizer: DomSanitizer,
-            private http: HttpClient,
-            private router: Router,
-            private auth: AuthenticationService,
-            // tslint:disable-next-line: variable-name
-            private _spinner: MatSnackBar,
-            // tslint:disable-next-line: variable-name
-            private _training: MatSnackBar,
-            // tslint:disable-next-line: variable-name
-            private _testing: MatSnackBar) { }
+  constructor(private sanitizer: DomSanitizer,
+    private http: HttpClient,
+    private router: Router,
+    private auth: AuthenticationService,
+    // tslint:disable-next-line: variable-name
+    private _spinner: MatSnackBar,
+    // tslint:disable-next-line: variable-name
+    private _training: MatSnackBar,
+    // tslint:disable-next-line: variable-name
+    private _testing: MatSnackBar) { }
 
   durationInSeconds = 5;
 
@@ -57,7 +57,7 @@ constructor(private sanitizer: DomSanitizer,
     });
     this.uploader.onBeforeUploadItem = (fileItem: FileItem) => {
       this.uploading = true;
-      this.hasBaseDropZoneOver = false;
+      this.hasBaseDropZoneOver = true;
       this.imageURL = this.sanitizer.bypassSecurityTrustUrl((window.URL.createObjectURL(fileItem._file)));
     };
     this.uploader.onSuccessItem = (fileItem: FileItem) => {
@@ -100,21 +100,37 @@ constructor(private sanitizer: DomSanitizer,
       this.navigate();
     }
 
-    setTimeout(() => {
+    await setTimeout(() => {
       this._testing.openFromComponent(TestingComponent, {
         duration: this.durationInSeconds * 2000,
       }),
-        this.progress = 90;
-    }, 2000);
+        this.progress = 95;
+    }, 8500);
+
+    await setTimeout(() => {
+      this.progress = 80;
+    }, 6500);
+
+    await setTimeout(() => {
+      this.progress = 75;
+    }, 4500);
+
+    await setTimeout(() => {
+      this.progress = 50;
+    }, 2500);
+
+    await setTimeout(() => {
+      this.progress = 40;
+    }, 500);
 
     this._training.openFromComponent(TrainingComponent, {
       duration: this.durationInSeconds * 2000,
     });
 
-    this.progress = 50;
+    this.progress = 25;
 
     console.log(this.patient);
-    this.Data = {Name: this.patient}
+    this.Data = { Name: this.patient }
     // this.http.post("http://127.0.0.1:5000/users/upload_patient", this.Data).pipe(map(res => "done")).subscribe();
 
   }

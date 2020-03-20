@@ -194,12 +194,10 @@ onSubmit() {
     const output = raster.toDataURL();
 
     this.aRoute.paramMap.subscribe((paramMap: ParamMap) => {
-        // this.Data = {'ID': paramMap.get('caseId'), 'Name': this.selectedName, 'File': output};
+        this.Data = {ID: paramMap.get('caseId'), Name: this.selectedName, File: output};
         this.http.post('http://127.0.0.1:5000/users/upload_annotate', this.Data).pipe(map(res => 'done')).subscribe();
    });
-   /* this.Data = {'ID': 1, 'Name': this.selectedName, 'File': output};
-    this.http.post('http://127.0.0.1:5000/users/upload_annotate', JSON.stringify(this.Data));*/
-
+   
     console.log(output);
     console.log(this.selectedName);
 }
