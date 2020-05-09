@@ -42,11 +42,12 @@ export class TableComponent implements OnInit {
       duration: this.durationInSeconds * 100,
     });
 
-    this.http.get('http://localhost:5000/users/get_cases').subscribe((success) => {
+    this.http.get('https://cce516e9.ngrok.io/users/get_cases').subscribe((success) => {
     this.dataSource = new MatTableDataSource(Object.assign(success));
     this.dataSource.paginator = this.paginator;
    });
   }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

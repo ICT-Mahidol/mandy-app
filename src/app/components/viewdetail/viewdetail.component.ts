@@ -17,10 +17,13 @@ interface Label {
 export class ViewdetailComponent implements OnInit {
 
   // tslint:disable-next-line: variable-name
+  image:any
   res_label: any;
   selectedName: string;
 
-  displayedColumns = ['caseName', 'imageSrc','Patient'];
+  displayedColumns = ['caseName', 'imageSrc'];
+  disCol =['caseName','img'];
+  source:any
   dataSource: any;
   caseId: string;
   grad: any;
@@ -43,15 +46,17 @@ export class ViewdetailComponent implements OnInit {
 
   async ngOnInit() {
     this.aRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.http.get('http://localhost:5000/users/get_percent/' + paramMap.get('caseId')).subscribe((success) => {
+      this.http.get('https://cce516e9.ngrok.io/users/get_percent/' + paramMap.get('caseId')).subscribe((success) => {
         this.dataSource = success;
       });
-      this.http.get('http://localhost:5000/users/get_prediction/' + paramMap.get('caseId')).subscribe((success) => {
+      this.http.get('https://cce516e9.ngrok.io/users/get_prediction/' + paramMap.get('caseId')).subscribe((success) => {
         this.res_label = success;
 
       });
+      this.http.get('https://cce516e9.ngrok.io/users/get_image/' + paramMap.get('caseId')).subscribe((success) => {
+        this.source = success;
+      });
     });
-
   }
 
   // tslint:disable-next-line: member-ordering
@@ -132,7 +137,7 @@ domain: ['#3CB371', '#CD5C5C', '#DAA520', '#778899','#9370DB','#6495ED','#48D1CC
     if (this.condition) {
     const params = new HttpParams().set('name', this.selectedName)
     this.aRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.http.get('http://localhost:5000/users/get_gradcam/' + paramMap.get('caseId'),{params}).subscribe((success) => {
+      this.http.get('https://cce516e9.ngrok.io/users/get_gradcam/' + paramMap.get('caseId'),{params}).subscribe((success) => {
         this.grad = success;
         console.log(success);
         });

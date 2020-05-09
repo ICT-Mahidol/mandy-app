@@ -52,9 +52,10 @@ export class UploaderComponent implements OnInit {
   ngOnInit() {
 
     this.uploader = new FileUploader({
-      url: 'http://127.0.0.1:5000/users/upload_cases',
+      url: 'https://cce516e9.ngrok.io/users/upload_cases',
+      allowedMimeType: ['image/png', 'image/jpg', 'image/jpeg'],
       autoUpload: true
-    });
+     });
     this.uploader.onBeforeUploadItem = (fileItem: FileItem) => {
       this.uploading = true;
       this.hasBaseDropZoneOver = true;
@@ -69,6 +70,7 @@ export class UploaderComponent implements OnInit {
     // this.uploader.onAfterAddingFile = (fileItem: FileItem) => {
     //   console.log(fileItem);
     // }
+   
   }
 
 
@@ -102,29 +104,29 @@ export class UploaderComponent implements OnInit {
 
     await setTimeout(() => {
       this._testing.openFromComponent(TestingComponent, {
-        duration: this.durationInSeconds * 2000,
+        duration: this.durationInSeconds * 1000,
       }),
         this.progress = 95;
-    }, 8500);
+    }, 4000);
 
     await setTimeout(() => {
       this.progress = 80;
-    }, 6500);
+    }, 3000);
 
     await setTimeout(() => {
       this.progress = 75;
-    }, 4500);
+    }, 2000);
 
     await setTimeout(() => {
       this.progress = 50;
-    }, 2500);
+    }, 1000);
 
     await setTimeout(() => {
       this.progress = 40;
     }, 500);
 
     this._training.openFromComponent(TrainingComponent, {
-      duration: this.durationInSeconds * 2000,
+      duration: this.durationInSeconds * 500,
     });
 
     this.progress = 25;

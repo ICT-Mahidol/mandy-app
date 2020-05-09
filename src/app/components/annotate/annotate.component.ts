@@ -95,10 +95,23 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
     }
   ];
 
+ /* fractureGroups: FractureGroup[] = [
+    {
+      name: 'Abnormal',
+      fracture: [
+        { value: 'Fracture', viewValue: 'Fracture' }
+      ]
+    },
+    {
+      name: 'Normal',
+      fracture: [
+        { value: 'No Fracture', viewValue: 'No Fracture' }
+      ]
+    } ];*/
 
   async ngOnInit() {
     this.aRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.http.get('http://localhost:5000/users/get_annotate/' + paramMap.get('caseId')).subscribe((success) => {
+      this.http.get('https://cce516e9.ngrok.io/users/get_annotate/' + paramMap.get('caseId')).subscribe((success) => {
         this.annotate = success;
       });
     });
@@ -133,7 +146,7 @@ export class AnnotateComponent implements OnInit, AfterViewInit {
     console.log(canvasEl);
     const imageEl = new Image();
     // imageEl.crossOrigin = '*';  //<-- set here
-    imageEl.src = 'http://localhost:5000/' + this.annotate;
+    imageEl.src = 'https://cce516e9.ngrok.io/' + this.annotate;
    // imageEl.setAttribute('crossorigin', 'anonymous');
 
     imageEl.onload = (ev: Event) => {
@@ -195,7 +208,7 @@ onSubmit() {
 
     this.aRoute.paramMap.subscribe((paramMap: ParamMap) => {
         this.Data = {ID: paramMap.get('caseId'), Name: this.selectedName, File: output};
-        this.http.post('http://127.0.0.1:5000/users/upload_annotate', this.Data).pipe(map(res => 'done')).subscribe();
+        this.http.post('https://cce516e9.ngrok.io/users/upload_annotate', this.Data).pipe(map(res => 'done')).subscribe();
    });
    
     console.log(output);

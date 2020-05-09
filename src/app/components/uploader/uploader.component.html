@@ -18,19 +18,19 @@
   <div class="input-group col-md-6" style="margin-left: 25%;">
     <div class="custom-file">
       <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
-        ng2FileSelect [uploader]="uploader">
-      <label class="custom-file-label" *ngIf="!uploadedFilePath" for="inputGroupFile01">Choose file or Drop file here to
-        upload</label>
-      <label class="custom-file-label" *ngIf="uploadedFilePath" for="inputGroupFile01">{{ item?.file?.name }}</label>
+        ng2FileSelect [uploader]="uploader" accept="image/png,image/jpg,,image/jpeg">
+      <label class="custom-file-label"  for="inputGroupFile01">Choose file or Drop file here to upload</label>
+      
     </div>
   </div>
   <br>
+  <!----
   <div class="form-group col-md-6" style="margin-left: 25%;">
     <label for="exampleInputEmail1">Patient name</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
       placeholder="Fill Patient's Name" [(ngModel)]="patient">
     <small id="emailHelp" class="form-text text-muted">Optional</small>
-  </div>
+  </div>-->
 
   <br>
   <br>

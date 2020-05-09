@@ -15,7 +15,7 @@ export class LoginComponent {
     email: '',
     password: ''
   }
-  private subtitle: string;
+  subtitle: string;
   ngOnInit() {
     this.subtitle = 'Predict the fracture name and location from Mandible x-ray images';
   }

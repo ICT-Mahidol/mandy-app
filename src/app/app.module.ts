@@ -54,11 +54,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MessageComponent } from './components/message/message.component';
 
-
-
-
-
-import { MatInputModule }  from '@angular/material';
+import { MatInputModule } from '@angular/material';
 
 
 
@@ -108,7 +104,7 @@ import { MatInputModule }  from '@angular/material';
     ReactiveFormsModule,
     MatSelectModule,
     NgxChartsModule,
-    MatInputModule 
+    MatInputModule
   ],
   providers: [AuthenticationService, AuthGuardService],
   bootstrap: [AppComponent]

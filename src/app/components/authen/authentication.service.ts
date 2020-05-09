@@ -66,11 +66,11 @@ export class AuthenticationService {
   }
 
   public register(user: TokenPayload): Observable<any> {
-    return this.http.post('/users/register', user);
+    return this.http.post('https://cce516e9.ngrok.io/users/register', user);
   }
 
   public login(user: TokenPayload): Observable<any> {
-    const base = this.http.post('/users/login', user);
+    const base = this.http.post('https://cce516e9.ngrok.io/users/login', user);
 
     const request = base.pipe(
       map((data: TokenResponse) => {

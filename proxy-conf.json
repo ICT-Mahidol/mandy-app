@@ -1,6 +1,6 @@
 {
     "/users":{
-        "target":"http://localhost:5000"
+        "target":"https://cce516e9.ngrok.io"
         
     }
 
